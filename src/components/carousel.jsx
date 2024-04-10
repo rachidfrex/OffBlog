@@ -19,28 +19,26 @@ function Carousel() {
     const [show, setShow] = useState(false);
     const banners = [
       {
-        id: 1,
-        image: banner1,
-        title: "we are degital meets fashions",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates, quidem, dolorum, quas doloremque quos quae quia quibusdam a ",
+      id: 1,
+      image: banner1,
+      title: "Welcome to our website",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates, quidem, dolorum, quas doloremque quos quae quia quibusdam a ",
       },
       {
-        id: 2,
-        image: banner2,
-        title: "we are degital meets fashions",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates, quidem, dolorum, quas doloremque quos quae quia quibusdam a ",
+      id: 2,
+      image: banner2,
+      title: "Discover our latest collection",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates, quidem, dolorum, quas doloremque quos quae quia quibusdam a ",
       },
       {
-        id: 3,
-        image: banner3,
-        title: "we are degital meets fashions",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates, quidem, dolorum, quas doloremque quos quae quia quibusdam a ",
+      id: 3,
+      image: banner3,
+      title: "Get ready for the summer",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates, quidem, dolorum, quas doloremque quos quae quia quibusdam a ",
       },
-      
-      
     ];
     const nextBanner = () => {
       setIndex((index + 1) % banners.length);
