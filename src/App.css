@@ -8,17 +8,46 @@
   100% {opacity: 1;}
 }
 
-.fade-in {
-  animation: fadeIn 1s;
+.buttons-container h2 {
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 0;
 }
-.card-container {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0 50%;
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  width: 160px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
-.card {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  width: 20%; /* Adjust as needed */
+
+.btn.test-completed::after,
+.btn.test-completed::before {
+  content: "category";
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 2.5;
+
+  transition: all 400ms;
+  top: 0;
+}
+
+.btn.btn.test-completed:hover::after {
+  top: -36px;
+}
+
+.btn.test-completed::before {
+  content: "add to favorites";
+  top: 36px;
+}
+
+.btn.btn.test-completed:hover::before {
+  top: 0;
 }

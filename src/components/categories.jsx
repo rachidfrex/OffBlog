@@ -56,10 +56,11 @@ function Categories() {
             <p className=" text-md font-semibold">winter</p>
           </div>
           <div className="flex gap-1 absolute top-5 right-5 hover:bg-white rounded-full shadow-lg transition duration-300 ease-in-out   ">
-           
-            <div className="   text-start bg-white p-2 rounded-full  px-7">
-                <p className=" text-md font-semibold"> Categorie </p>
-              </div>
+           {/* this is the new button  */}
+            <div className=" buttons-container btn     bg-white  rounded-full ">
+                <p className="btn  test-completed text-md font-semibold ">  </p>
+            </div>
+              
 
               <div className=" text-start bg-white p-2 rounded-full  hover:rotate-90 transition duration-300 ease-in-out  hover:text-red-500   ">
               <Plus />
