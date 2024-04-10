@@ -88,7 +88,7 @@ function Carousel() {
          id="title-banner"
          className="bg-black p-5 rounded-lg flex items-end gap-5 w-7/12"
          >
-         <h1 id="title" className="text-7xl font-semibold text-white leading-tight  ">
+         <h1 id="title" className="text-6xl font-semibold text-white leading-tight line-clamp-2   ">
             {banners[index].title}
           </h1>
           <p
@@ -107,16 +107,14 @@ function Carousel() {
          <div className="flex flex-col gap-1  ">
          <div className="flex  gap-2 hover:bg-white rounded-full transition duration-500 ease-in-out   ">
          <button className=" bg-white  text-balck text-md px-5 py-3 rounded-full font-semibold">
-            Shop Now
+            Read now
           </button>
           <button className="  bg-white  text-balck text-lg p-3 rounded-full font-semibold hover:rotate-45 transition duration-500 ease-in-out   ">
           <MoveUpRight />
           </button>
          </div>
 
-          <p className="text-white text-center text-md px-5">
-            Top Collection
-          </p>
+          
          </div>
           </div> 
             <div className="absolute top-20 right-24 flex gap-5">
