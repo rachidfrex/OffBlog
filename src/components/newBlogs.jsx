@@ -9,8 +9,6 @@ import product7 from "../assets/images/products/product7.jpg";
 import product8 from "../assets/images/products/product8.jpg";
 import product9 from "../assets/images/products/product9.jpg";
 import product10 from "../assets/images/products/product10.jpg";
-import { MoveRight } from "lucide-react";
-import { ShoppingCart } from "lucide-react";
 import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
 function NewBlogs() {
@@ -112,26 +110,22 @@ function NewBlogs() {
               <div className=" bottom-5 flex justify-between  items-end   text-start bg-white px-5 mb-3 ">
                 <div>
                   <p className=" text-lg font-semibold ">{Blogs.name}</p>
-                  <p className="text-md  line-clamp-2 ">{Blogs.content}</p>
+                  <p className="text-md  line-clamp-2 text-slate-600 ">
+                    {Blogs.content}
+                  </p>
                 </div>
               </div>
               <div className="px-5 mb-3 flex justify-between gap-5 items-center ">
                 <div className="flex  gap-5">
-                  <Heart className="hover:text-red-500 " />
-                  <Bookmark  className="hover:text-black/50" />
+                  <Heart className="hover:text-red-500 cursor-pointer " />
+                  <Bookmark className="hover:text-black/50 cursor-pointer" />
                 </div>
-                <div
-                className="group text-black transition duration-300"
-                >
-                read more
-                <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
+                
+                <div className="group text-black transition duration-300 cursor-pointer">
+                  read more
+                  <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
                 </div>
               </div>
-              
-              
-             
-
-              
             </div>
           ))}
         </div>

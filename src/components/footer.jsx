@@ -65,10 +65,7 @@ function Footer() {
           <p className="text-center mt-10">
             &copy; 2021 OffStore. All rights reserved.
           </p>
-          <div class="buttons-container">
-            <h2>Text Changing Button</h2>
-            <a href="#" class="btn test-completed"></a>
-          </div>
+         
         </div>
       </div>
     </div>
