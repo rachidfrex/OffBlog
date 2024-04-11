@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         BeVietnam: ["Be Vietnam", "sans-serif"],
       },
+      backgroundImage: {
+        'bgsearch': "url('/src/assets/images/bg-search.png')",
+      }
     },
   },
   plugins: [],

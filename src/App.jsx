@@ -1,7 +1,8 @@
 import "./App.css";
 import Nav from "./components/Nav";
 import Home from "./pages/home";
-import Blogs from "./pages/blog";
+import Blog from "./pages/blog";
+import Blogs from "./pages/blogs";
 import Footer from "./components/footer";
 import {Routes, Route} from "react-router-dom";
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/testblogs" element={<Blog />} />
         <Route path="/blogs" element={<Blogs />} />
       </Routes>
       <Footer />

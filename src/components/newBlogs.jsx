@@ -11,6 +11,7 @@ import product9 from "../assets/images/products/product9.jpg";
 import product10 from "../assets/images/products/product10.jpg";
 import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
+import Tooltip from "@mui/material/Tooltip";
 function NewBlogs() {
   const Blogs = [
     {
@@ -19,6 +20,8 @@ function NewBlogs() {
       name: "The best way to wear a suit",
       content:
         "the world of fashion is always changing and we are always on the cusp of it jnnj gre  regreg reg ergreg g reg.",
+      likes: 12,
+      saves: 20,
     },
     {
       id: 2,
@@ -117,10 +120,14 @@ function NewBlogs() {
               </div>
               <div className="px-5 mb-3 flex justify-between gap-5 items-center ">
                 <div className="flex  gap-5">
+                <Tooltip title="likes" arrow>
                   <Heart className="hover:text-red-500 cursor-pointer " />
+                  </Tooltip>
+                  <Tooltip title="save" arrow>
                   <Bookmark className="hover:text-black/50 cursor-pointer" />
+                  </Tooltip>
                 </div>
-                
+
                 <div className="group text-black transition duration-300 cursor-pointer">
                   read more
                   <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
