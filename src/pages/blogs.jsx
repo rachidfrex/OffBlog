@@ -64,7 +64,7 @@ function Blogs() {
           content:
             "the world of fashion is always changing and we are always on the cusp of it.",
         },
-        {
+        { 
           id: 8,
           image: product8,
           name: "The best way to wear a suit",
