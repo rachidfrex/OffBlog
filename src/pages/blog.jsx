@@ -28,13 +28,13 @@ function Blog() {
         </div>
       </div>
       <div className="flex gap-3 justify-center items-center  ">
-        <span className=" border  px-5 py-[5px] bg-white  shadow-sm rounded-full  ">
+        <span className="   px-5 py-[5px] bg-slate-100  shadow-sm rounded-full  ">
           tage 1
         </span>
-        <span className=" border  px-5 py-[5px]   bg-white shadow-sm rounded-full ">
+        <span className="   px-5 py-[5px]   bg-slate-100  shadow-sm rounded-full ">
           tage 2
         </span>
-        <span className=" border px-5 py-[5px]   bg-white shadow-sm rounded-full ">
+        <span className="  px-5 py-[5px]   bg-slate-100  shadow-sm rounded-full ">
           tage 3
         </span>
       </div>

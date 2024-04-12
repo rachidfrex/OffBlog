@@ -4,7 +4,9 @@ import Home from "./pages/home";
 import Blog from "./pages/blog";
 import Blogs from "./pages/blogs";
 import Login from "./pages/login";
+import Dashboard from "./pages/dashboard";
 import Footer from "./components/footer";
+
 import {Routes, Route} from "react-router-dom";
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path="/testblogs" element={<Blog />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </div>

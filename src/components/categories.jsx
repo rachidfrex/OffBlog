@@ -33,13 +33,13 @@ function Categories() {
         <button className="text-black bg-white rounded-full p-2 hover:translate-x-1 transition duration-300 ease-in-out">
           <ChevronRight />
         </button>
-        <button className="bg-black text-white text-md px-7 py-2 rounded-full font-semibold">
+        <button className="bg-black  text-white text-md px-7 py-2 rounded-full  border-2 border-black hover:bg-white hover:text-black transform duration-200 ease-in-out">
           view all
         </button>
       </div>
       <div className="flex gap-5 justify-center items-center">
         <h1 className="text-5xl font-semibold text-black leading-tight text-center ">
-        browse  new & trending <br />  Categories
+        Browse  New & Trending <br />  Categories
         </h1>
       </div>
       <div className="flex gap-5 justify-start items-center mt-10 relative ">
