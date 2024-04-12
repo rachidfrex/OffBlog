@@ -87,7 +87,7 @@ function Blogs() {
         },
       ];
   return (
-    <div className="mt-10 mx-20  py-5  flex flex-col gap-5 justify-center items-center   ">
+    <div className="mt-10 mx-20    flex flex-col gap-5 justify-center items-center   ">
       <div className="  w-full relative bg-white rounded-xl   shadow-sm  ">
        <div className=" py-32 ">
        <div className=" text-center flex flex-col gap-2 justify-center items-center">

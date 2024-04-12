@@ -5,8 +5,9 @@ function Nav() {
     <div className="flex justify-between items-center h-16 bg-white text-black relative shadow-sm px-10 w-full ">
       <div>
         <h1 className='flex gap-2'>
+        <Link to="/" className='flex gap-2'>
           <Feather  />
-          <Link to="/">offBlog</Link>
+          offBlog</Link>
         </h1>
       </div>
       <div>
