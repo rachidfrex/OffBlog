@@ -87,9 +87,9 @@ function Blogs() {
         },
       ];
   return (
-    <div className="mt-10 mx-20  py-5  flex flex-col gap-5 justify-center items-center bg-white  rounded-lg shadow-sm  ">
-      <div className=" bg-[url('/src/assets/images/bg-search.png')] w-full bg-cover bg-center bg-no-repeat relative ">
-       <div className=" backdrop-blur-sm py-32 bg-white/30">
+    <div className="mt-10 mx-20  py-5  flex flex-col gap-5 justify-center items-center   ">
+      <div className="  w-full relative bg-white rounded-xl   shadow-sm  ">
+       <div className=" py-32 ">
        <div className=" text-center flex flex-col gap-2 justify-center items-center">
           <h1 className="text-4xl  font-semibold text-black leading-tight text-center">
             Write your idea and spread it with the world
@@ -111,13 +111,23 @@ function Blogs() {
         </div>
         </div>
        </div>
-      
-       
       </div>
-      <div className="w-full px-10">
-        <h1 className="text-3xl flex py-5 flex-col justify-start items-start w-full text-black leading-tight text-center ">
-          Editor's choice
-        </h1>
+      <div className="w-full ">
+       <div 
+       className="flex  gap-5 justify-between items-center w-full"
+       >
+        <h1 className="  px-10 text-4xl flex py-5 flex-col justify-start items-start w-full text-black leading-tight text-center ">
+            recently added blogs
+          </h1>
+          <div>
+            <select className="px-10 py-2 rounded-md border-2 border-black text-slate-600">
+              <option value="default">store  by</option>
+              <option value="name">Name</option>
+              <option value="date">Date</option>
+              <option value="category">Category</option>
+            </select>
+          </div>
+       </div>
         <div className="grid grid-cols-4 gap-4 py-5 ">
           {blogs.map((Blogs) => (
             <div
