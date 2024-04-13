@@ -89,14 +89,14 @@ function NewBlogs() {
   ];
 
   return (
-    <div className="mt-20 px-20">
+    <div className="mt-20 md:px-20 px-10 flex flex-col w-full items-center ">
       <div className="flex gap-5 justify-center items-center mb-10 ">
         <h1 className="text-5xl font-semibold text-black leading-tight text-center ">
           Discover our new <br /> Blogs
         </h1>
       </div>
       <div>
-        <div className="grid grid-cols-4 gap-4  ">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 gap-4 max-w-[1280px]     ">
           {Blogs.map((Blogs) => (
             <div
               key={Blogs.id}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -7,7 +8,7 @@ function Login() {
          }
   return (
     <div className="flex gap-10 justify-center items-center flex-col h-screen mx-10 ">
-      <div className="bg-white p-10 flex gap-10 flex-col rounded-lg">
+      <div className="bg-white w-full md:w-auto p-10 flex gap-10 flex-col rounded-lg">
       <div
       className="  rounded-lg text-slate-700 flex justify-start items-start flex-col gap-2 w-full md:w-[28rem]  "
       >
@@ -54,7 +55,9 @@ function Login() {
         login
         </button>
         
-        <span className="text-slate-500 text-sm text-center w-full">don't have an account? <a href="#" className="text-black">sign up</a></span>
+        <span className="text-slate-500 text-sm text-center w-full">don't have an account? 
+        <Link to="/register" className="text-black"> register now</Link>
+        </span>
         
 
        

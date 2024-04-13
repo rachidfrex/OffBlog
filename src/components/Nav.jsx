@@ -93,8 +93,8 @@ function Nav() {
           >
             <Search size={20}/>
           </button>
-          <Link to="/login" className='text-sm md:text-base btn-dark py-2 hidden md:block' >Login</Link>
-          <Link to="/register" className='text-sm md:text-base btn-light py-2  hidden md:block'>Register</Link>
+          <Link to="/login" className='text-sm md:text-base btn-dark py-2 ' >Login</Link>
+          <Link to="/register" className='text-sm md:text-base btn-light py-2 hidden md:block  '>Register</Link>
           
           
           

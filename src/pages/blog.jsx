@@ -6,13 +6,13 @@ import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
 function Blog() {
   return (
-    <div className="mt-10 mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
+    <div className="mt-10 mx-5 max-w-[1536px]   md:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
       <div className="flex  justify-between items-center w-full px-5 transition duration-300 ease-out cursor-pointer">
         <div className="flex items-center justify-center ">
           <ChevronLeft />
           <p className="text-sm">Back</p>
         </div>
-        <div className="flex  gap-5">
+        <div className="flex  gap-5 text-sm md:text-balance ">
          <div className="flex gap-1">
           <Heart className="hover:text-red-500 cursor-pointer " /> 
           <p>12</p>
@@ -40,7 +40,7 @@ function Blog() {
       </div>
       {/* this is the blogs title */}
       <div className="">
-        <h1 className="text-5xl flex  justify-center items-center text-center w-[700px]  font-semibold ">
+        <h1 className=" text-3xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-[700px]  font-semibold ">
           how to use message app to comunicate and share
         </h1>
       </div>
@@ -50,14 +50,14 @@ function Blog() {
         <p className="text-center text-slate-500  text-sm">8:12 AM</p>
       </div>
       {/* this is the blogs image */}
-      <div className="">
+      <div className="px-5">
         <img
           src={login}
           className=" object-center  h-[480px]   w-full rounded-xl  aspect-video "
         />
       </div>
       {/* this is the blogs content */}
-      <div className=" grid grid-cols-12 justify-start w-full  gap-5 px-10 py-10">
+      <div className=" flex flex-col md:grid md:grid-cols-12  justify-start w-full  gap-5 px-10 py-10">
         <div className=" col-span-3">
           <h1 className="text-3xl font-bold mb-4">Table of Content</h1>
           <ul className="text-sm ">
