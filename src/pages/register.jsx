@@ -64,19 +64,15 @@ function Register() {
                         placeholder="Confirm Password"
                         className="p-2 rounded-lg w-full bg-slate-50 input-box"
                     />
-                    <div className="text-slate-500 text-sm flex items-center  gap-1" >
+                    <span  className="text-sm text-slate-500" >
                         By creating an account, you agree to our
-                        <p></p>
-                        <div className="group text-black transition duration-300 cursor-pointer ">
-                        <a href="#" className="text-black">terms and conditions
+                        <a href="#" className="text-black"> terms and conditions
                         </a>  
-                        <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
+                      
 
-                        </div>
+                       
                         
-                        
-
-                    </div>
+                    </span>
                     
                     <button
                         type="submit"
