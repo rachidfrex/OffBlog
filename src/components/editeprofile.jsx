@@ -12,7 +12,7 @@ function Editeprofile() {
     
   return (
     <div>
-        
+
       <h1 className=" font-semibold  leading-tight text-start mt-2  ">
         Edite Profile
       </h1>
@@ -48,7 +48,7 @@ function Editeprofile() {
               </div>
             </div>
             <div className=" mt-5 className={'absolute md:border-0 border-b w-full left-0 top-full mt-0.5 md:show bg-white  border-grey py-3 px-[5vw] md:block md:relative md:inset-0 md:p-0 md:w-auto ' + (search ? 'show' : 'hide')}">
-                <input
+                <input 
                   type="text"
                   placeholder="email"
                   className="w-full md:w-[515px] text-sm pr-[12%]  bg-slate-100 bg-grey p-3  pl-6 md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
