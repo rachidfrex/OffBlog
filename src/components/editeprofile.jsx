@@ -2,6 +2,7 @@ import React from "react";
 import { UserRound } from "lucide-react";
 import { Mail } from 'lucide-react';
 import { useState } from "react";
+import prodil from "../assets/images/profil.jpg";
 
 function Editeprofile() {
     const [textCounter, setTextCounter] = useState(200);
@@ -18,7 +19,7 @@ function Editeprofile() {
       </h1>
       <div className=" grid grid-cols-12   gap-5 mt-5">
         <div className=" col-span-2 flex flex-col  items-center">
-          <img src="" alt="" className="w-32 h-32 border-2 rounded-full  " />
+          <img src={prodil} alt="" className="w-32 h-32 border-2 rounded-full  object-center " />
           <button className="btn-light py-2 text-sm mt-2 flex justify-center w-full">
             upload
           </button>

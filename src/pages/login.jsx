@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Eye } from 'lucide-react';
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -32,8 +33,9 @@ function Login() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="email"
-        className="p-2 rounded-lg w-full bg-slate-50"
+        className="p-2 rounded-lg w-full bg-slate-50 input-box"
         />
+        <div className="relative w-full">
         <label htmlFor="password"  className="text-slate-500 text-sm mt-4">
         password
        </label>
@@ -42,11 +44,16 @@ function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="password"
-        className="p-2 rounded-lg w-full bg-slate-50 "
+        className="p-2 rounded-lg w-full bg-slate-50 input-box  "
         />
+        <span className="input-icon right-4  left-[auto] top-[70%] cursor-pointer bg-white  ">
+            <Eye size={15} />  
+        </span>
+        </div>
         <span className=" text-slate-500 text-sm">
             forget password? <a href="#" className="text-black">click here</a>
         </span>
+        
         <button
         type="submit"
 

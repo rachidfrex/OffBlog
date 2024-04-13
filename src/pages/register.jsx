@@ -32,7 +32,7 @@ function Register() {
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Full Name"
-                        className="p-2 rounded-lg w-full bg-slate-50"
+                        className="p-2 rounded-lg w-full bg-slate-50 input-box"
                     />
                     <label htmlFor="email" className="text-slate-500 text-sm">
                         Email
@@ -42,7 +42,7 @@ function Register() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
-                        className="p-2 rounded-lg w-full bg-slate-50"
+                        className="p-2 rounded-lg w-full bg-slate-50 input-box"
                     />
                     <label htmlFor="password" className="text-slate-500 text-sm mt-4">
                         Password
@@ -52,7 +52,7 @@ function Register() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
-                        className="p-2 rounded-lg w-full bg-slate-50"
+                        className="p-2 rounded-lg w-full bg-slate-50 input-box"
                     />
                     <label htmlFor="confirmPassword" className="text-slate-500 text-sm mt-4">
                         Confirm Password
@@ -62,11 +62,22 @@ function Register() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm Password"
-                        className="p-2 rounded-lg w-full bg-slate-50"
+                        className="p-2 rounded-lg w-full bg-slate-50 input-box"
                     />
-                    <span className="text-slate-500 text-sm">
-                        By creating an account, you agree to our <a href="#" className="text-black">terms and conditions</a>  
-                    </span>
+                    <div className="text-slate-500 text-sm flex items-center  gap-1" >
+                        By creating an account, you agree to our
+                        <p></p>
+                        <div className="group text-black transition duration-300 cursor-pointer ">
+                        <a href="#" className="text-black">terms and conditions
+                        </a>  
+                        <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
                     <button
                         type="submit"
                         className="bg-black mt-4 text-white p-2 rounded-lg border-2 border-black cursor-pointer w-full hover:bg-white hover:text-black hover:border-2 hover:border-black transition duration-300 ease-in-out"

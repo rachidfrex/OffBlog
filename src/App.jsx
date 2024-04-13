@@ -12,16 +12,20 @@ import {Routes, Route} from "react-router-dom";
 function App() {
   return (
     <div className="font-BeVietnam  bg-slate-100 text-slate-700 w-full ">
-      <Nav />
+      <Nav/>
       <Routes>
         <Route path="/" element={<Home />} />
+     
+       
         <Route path="/testblogs" element={<Blog />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        
       </Routes>
       <Footer />
+      
     </div>
   );
 }
