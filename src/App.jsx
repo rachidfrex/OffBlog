@@ -7,7 +7,6 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
 import Footer from "./components/footer";
-import Editeprofile from "./components/editeprofile";
 
 import {Routes, Route} from "react-router-dom";
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/edit-profile" element={<Editeprofile />} />
       </Routes>
       <Footer />
     </div>
