@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { X } from 'lucide-react';
 import banner3 from '../assets/images/banner3.jpg';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 // material ui drawer
 
@@ -12,14 +14,10 @@ import banner3 from '../assets/images/banner3.jpg';
 function Nav() {
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [islogin, setIslogin] = useState(true);
-  const handelLogin = () => {
-    if (islogin) {
-      setIslogin(false);
-    } else {
-      setIslogin(true);
-    }
-  };
+  const menuRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  
+ 
  
 
   return (
@@ -53,7 +51,7 @@ function Nav() {
 
     {/* menu */}
       
-      <div className={"flex w-full  absolute right-0 top-0  md:relative   justify-start  md:justify-end items-center md:show   "+(menu  ?'show ':'hide') } >
+      <div ref={menuRef} className={"flex w-full  absolute right-0 top-0  md:relative   justify-start  md:justify-end items-center md:show   "+(menu  ?'show ':'hide' ) } >
       
      
         <div 
@@ -68,8 +66,8 @@ function Nav() {
          
         
         </h1>
-       <button>
-          <X size={30} onClick={() => setMenu(false)} />
+       <button >
+          <X size={30} className='hover:text-red-500'  onClick={() => setMenu(false)} />
        </button>
           </div>
           <Link to="/testblogs" className=' md:text-base navlinks  ' >testblogs</Link>
