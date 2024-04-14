@@ -22,7 +22,7 @@ function Nav() {
 
   return (
     <div className="navbar  ">
-      <div className='flex items-center justify-center gap-8'>
+      <div className='flex items-center justify-center md:gap-4 lg:gap-8 '>
         <h1 className='flex gap-2'>
         <Link to="/" className='flex gap-2' >
           <Feather  />
@@ -55,7 +55,7 @@ function Nav() {
       
      
         <div 
-        className=' absolute  md:relative w-[60%] min-w-[300px]    flex flex-col justify-start py-5 md:py-0  md:justify-end h-screen md:h-auto items-start   md:flex-row bg-white  p-2 mt-0.5 px-5 md:p-0 top-0 md:top-full gap  md:gap-6 gap-3 '
+        className=' absolute  md:relative w-[60%] min-w-[300px]    flex flex-col justify-start py-5 md:py-0  md:justify-end h-screen md:h-auto items-start   md:flex-row bg-white  p-2 mt-0.5 px-5 md:p-0 top-0 md:top-full   lg:gap-6 md:gap-3 '
         >
           <div className='flex justify-between w-full md:hidden'>
           <h1 className='flex gap-2 px-3 mb-2 '>
@@ -69,16 +69,13 @@ function Nav() {
        <button >
           <X size={30} className='hover:text-red-500'  onClick={() => setMenu(false)} />
        </button>
-          </div>
-          <Link to="/testblogs" className=' md:text-base navlinks  ' >testblogs</Link>
-          
-       
+        </div>
+        <Link to="/testblogs" className=' md:text-base navlinks  ' >testblogs</Link>
       <Link to="/blogs " className=' md:text-base navlinks'>Blogs</Link>
         <Link  to="/about " className=' md:text-base navlinks'>About</Link>
-        <Link to="/faq " className=' md:text-base navlinks'>FAQ</Link> 
-
+        <Link to="/faq " className=' md:text-base navlinks'>FAQ</Link>
         <Link to="/login" className='text-sm md:text-base btn-dark py-2 md:hidden block w-full text-center '>Login</Link>
-          <Link to="/register" className='text-sm md:text-base btn-light py-2 md:hidden block w-full text-center  '>Register</Link>
+        <Link to="/register" className='text-sm md:text-base btn-light py-2 md:hidden block w-full text-center  '>Register</Link>
         </div>
        
         </div>
@@ -87,14 +84,14 @@ function Nav() {
         {/* {login profil} */}
        
        
-        <div className='flex items-center gap-3 md:gap-4 ml-auto    '>
+        <div className='flex items-center md:gap-3 lg:gap-4 ml-auto    '>
           <button className='md:hidden bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center'
           onClick={() => {setSearch(!search), setMenu(false)}}
           >
             <Search size={20}/>
           </button>
-          <Link to="/login" className='text-sm md:text-base btn-dark py-2 ' >Login</Link>
-          <Link to="/register" className='text-sm md:text-base btn-light py-2 hidden md:block  '>Register</Link>
+          <Link to="/login" className='text-sm md:text-base btn-dark py-2 hidden lg:block  ' >Login</Link>
+          <Link to="/register" className='text-sm md:text-base btn-light py-2 hidden lg:block  '>Register</Link>
           
           
           
