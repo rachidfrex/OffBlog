@@ -6,11 +6,12 @@ import { SquarePen } from 'lucide-react';
 import { UserRound } from 'lucide-react';
 import { Lock } from 'lucide-react';
 import Editeprofile from '../components/editeprofile';
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route ,Outlet} from "react-router-dom";
 
 
 function Dashboard() {
   return (
+    <>
     <div 
     className=' grid grid-cols-12   gap-5 justify-start my-10 mx-20 bg-white rounded-lg p-5'
     >
@@ -51,7 +52,7 @@ function Dashboard() {
                    edite profile
                   
                </Link>
-               <Link to='/change-password' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in'>
+               <Link to='/dashboard/change-password' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in'>
                <Lock size={15} />
                   change password
                </Link>
@@ -65,12 +66,12 @@ function Dashboard() {
         <div
         className='col-span-10'
         
-        ><Editeprofile />
-            
-        
-            
+        >
+      <Outlet/>
         </div>
     </div>
+    
+    </>
   )
 }
 
