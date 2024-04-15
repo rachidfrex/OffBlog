@@ -39,12 +39,11 @@ function Register() {
     if (result.success) {
       console.log("result", result);
       localStorage.setItem("user-info", JSON.stringify(result));
+      // toast.success("Registeration successful");
       navigate("/login");
     } else {
-      // setError(!error);
       console.log("error:", result.error);
       toast.error(result.error);
-      
     }
     
     

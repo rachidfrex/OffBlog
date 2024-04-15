@@ -1,14 +1,47 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye } from 'lucide-react';
+import { Toaster } from 'react-hot-toast';
+import toast from "react-hot-toast";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    // login function
     const handleLogin = async (e) => {
         e.preventDefault();
+        if (!email || !password) {
+            toast.error("All fields are required.");
+            return;
          }
+        let item = { email, password };
+        console.log(item);
+        let result = await fetch("http://localhost:8000/api/login", {
+            method: "POST",
+            body: JSON.stringify(item),
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+        });
+        result = await result.json();
+        console.log("result", result);
+        if (result.success) {
+            localStorage.setItem("user-info", JSON.stringify(result));
+            toast.success("Login successful");
+        }
+        else {
+
+            toast.error(result.error);
+        }
+         }
+        // end of the login function
   return (
     <div className="flex gap-10 justify-center items-center flex-col h-screen mx-10 ">
+      <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
       <div className="bg-white w-full md:w-auto p-10 flex gap-10 flex-col rounded-lg">
       <div
       className="  rounded-lg text-slate-700 flex justify-start items-start flex-col gap-2 w-full md:w-[28rem]  "
