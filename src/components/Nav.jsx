@@ -7,6 +7,10 @@ import { X } from 'lucide-react';
 import banner3 from '../assets/images/banner3.jpg';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+
+
 
 // material ui drawer
 
@@ -18,13 +22,7 @@ function Nav() {
 // if the user is logged in it should hide the login and register button and show the profile button
 
 
-  useEffect(() => {
-    document.addEventListener('mousedown', (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setMenu(false);
-      }
-    });
-  }, []);
+
   
  
  
@@ -83,8 +81,20 @@ function Nav() {
       <Link to="/blogs " className=' md:text-base navlinks'>Blogs</Link>
         <Link  to="/about " className=' md:text-base navlinks'>About</Link>
         <Link to="/faq " className=' md:text-base navlinks'>FAQ</Link>
-        <Link to="/login" className='text-sm md:text-base btn-dark py-2 md:hidden block w-full text-center '>Login</Link>
-        <Link to="/register" className='text-sm md:text-base btn-light py-2 md:hidden block w-full text-center  '>Register</Link>
+        {
+          // if the user is logged in it should hide the login and register button and show the profile button
+          localStorage.getItem("user-info") ? (
+            <>
+            <Link to="/profile" className=' md:text-base navlinks '>Profile</Link>
+            </>
+          ) : (
+            <>
+            <Link to="/login" className=' md:text-base navlinks'>Login</Link>
+            <Link to="/register" className=' md:text-base navlinks'>Register</Link>
+            </>
+          )
+          
+        }
         </div>
        
         </div>
@@ -99,8 +109,22 @@ function Nav() {
           >
             <Search size={20}/>
           </button>
-          <Link to="/login" className='text-sm md:text-base btn-dark py-2 hidden lg:block  ' >Login</Link>
+          {
+          // if the user is logged in it should hide the login and register button and show the profile button
+          localStorage.getItem("user-info") ? (
+            <Link to="/dashboard/edit-profile" className='hidden md:flex gap-2 items-center text-sm text-slate-700'>
+              <Stack direction="row" spacing={1}>
+                <Avatar alt="Remy Sharp" src={banner3} />
+              </Stack>
+            </Link>
+          ) : (
+            <>
+            <Link to="/login" className='text-sm md:text-base btn-dark py-2 hidden lg:block  ' >Login</Link>
           <Link to="/register" className='text-sm md:text-base btn-light py-2 hidden lg:block  '>Register</Link>
+            </>
+          )
+
+          }
           
           
           
