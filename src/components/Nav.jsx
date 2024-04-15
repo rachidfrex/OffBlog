@@ -7,7 +7,7 @@ import { X } from 'lucide-react';
 import banner3 from '../assets/images/banner3.jpg';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-
+// material ui menu 
 function Nav() {
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
@@ -27,6 +27,15 @@ function Nav() {
       // handleForceUpdate();
     }
   }, []);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
  
 
@@ -74,6 +83,7 @@ function Nav() {
           <Link to="/blogs " className=' md:text-base navlinks'>Blogs</Link>
           <Link to="/about " className=' md:text-base navlinks'>About</Link>
           <Link to="/faq " className=' md:text-base navlinks'>FAQ</Link>
+          
           {
             isUser ? (
               <Link to="/profile" className=' md:text-base  md:hidden navlinks '>Profile</Link>
@@ -95,11 +105,14 @@ function Nav() {
         </button>
         {
           isUser ? (
-            <Link to="/dashboard/edit-profile" className='hidden md:flex gap-2 items-center text-sm text-slate-700'>
+            <>
+            
+            <Link to="/dashboard/edit-profile" className='hidden md:flex  items-center text-sm text-slate-700'>
               <Stack direction="row" spacing={1}>
                 <Avatar alt="Remy Sharp" src={banner3} />
               </Stack>
             </Link>
+           </>
           ) : (
             <>
               <Link to="/login" className='text-sm md:text-base btn-dark py-2 hidden lg:block  ' >Login</Link>

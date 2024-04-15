@@ -7,6 +7,7 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
 
@@ -23,10 +24,12 @@ function Register() {
   // register function
   async function handleRegister(e) {
     e.preventDefault();
-    if (!name || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword  ) {
       toast.error("All fields are required.");
       return;
   }
+ 
+
    
     let item = { name, email, password, confirmPassword };
     console.log(item);
