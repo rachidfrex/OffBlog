@@ -6,10 +6,21 @@ import { SquarePen } from 'lucide-react';
 import { UserRound } from 'lucide-react';
 import { Lock } from 'lucide-react';
 import Editeprofile from '../components/editeprofile';
-import {Routes, Route ,Outlet} from "react-router-dom";
+import {Outlet} from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 function Dashboard() {
+  //if the user is not logged in, redirect to the login page
+  const navigate = useNavigate();
+  useEffect(() => {
+    let user = localStorage.getItem("user-info");
+    if (!user) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <>
     <div 

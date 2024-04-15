@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
@@ -11,7 +11,14 @@ function Register() {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
+  // check if the user is logged in
+  useEffect(() => { 
+    let user = localStorage.getItem("user-info");
+    if (user) {
+        navigate("/");
+    }
 
+})
   
   // register function
   async function handleRegister(e) {
@@ -38,7 +45,6 @@ function Register() {
 
     if (result.success) {
       console.log("result", result);
-      localStorage.setItem("user-info", JSON.stringify(result));
       // toast.success("Registeration successful");
       navigate("/login");
     } else {

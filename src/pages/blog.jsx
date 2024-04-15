@@ -5,6 +5,7 @@ import { Bookmark } from "lucide-react";
 import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
 function Blog() {
+  
   return (
     <div className="mt-10 mx-5 max-w-[1536px]   md:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
       <div className="flex  justify-between items-center w-full px-5 transition duration-300 ease-out cursor-pointer">
