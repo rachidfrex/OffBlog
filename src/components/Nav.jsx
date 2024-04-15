@@ -13,18 +13,22 @@ function Nav() {
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
   const [isUser, setIsUser] = useState(false);
-  const [hasRefreshed, setHasRefreshed] = useState(false);
-
+  
+  const handleForceUpdate = () => {
+    // Use forceUpdate to trigger re-render
+    forceUpdate();
+  };
+  
   useEffect(() => {
+
     let user = localStorage.getItem("user-info");
     if (user) {
       setIsUser(true);
-      if (!hasRefreshed) {
-        setHasRefreshed(true);
-        // window.location.reload(); // Refresh the page once
-      }
+      // handleForceUpdate();
     }
-  }, [hasRefreshed]);
+  }, []);
+
+ 
 
   return (
     <div className="navbar">
@@ -52,7 +56,7 @@ function Nav() {
 
       <div ref={menuRef} className={"flex w-full  absolute right-0 top-0  md:relative   justify-start  md:justify-end items-center md:show   " + (menu ? 'show ' : 'hide')}>
         <div
-          className=' absolute  md:relative w-[60%] min-w-[300px]    flex flex-col justify-start py-5 md:py-0  md:justify-end h-screen md:h-auto items-start   md:flex-row bg-white  p-2 mt-0.5 px-5 md:p-0 top-0 md:top-full   lg:gap-6 md:gap-3 '
+          className='border-r shadow-md md:shadow-none  md:border-0  absolute  md:relative w-[60%] min-w-[300px]    flex flex-col justify-start py-5 md:py-0  md:justify-end h-screen md:h-auto items-start   md:flex-row bg-white  p-2 mt-0.5 px-5 md:p-0 top-0 md:top-full   lg:gap-6 md:gap-3 '
         >
           <div className='flex justify-between w-full md:hidden'>
             <h1 className='flex gap-2 px-3 mb-2 '>
@@ -60,10 +64,11 @@ function Nav() {
                 <Feather />
                 offBlog
               </Link>
-              <button>
+              
+            </h1>
+            <button>
                 <X size={30} className='hover:text-red-500' onClick={() => setMenu(false)} />
               </button>
-            </h1>
           </div>
           <Link to="/testblogs" className=' md:text-base navlinks  ' >testblogs</Link>
           <Link to="/blogs " className=' md:text-base navlinks'>Blogs</Link>
