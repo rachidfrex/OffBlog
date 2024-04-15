@@ -13,11 +13,11 @@ function Nav() {
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
   const [isUser, setIsUser] = useState(false);
-  
-  const handleForceUpdate = () => {
-    // Use forceUpdate to trigger re-render
-    forceUpdate();
-  };
+
+  // const handleForceUpdate = () => {
+  //   // Use forceUpdate to trigger re-render
+  //   forceUpdate();
+  // };
   
   useEffect(() => {
 
