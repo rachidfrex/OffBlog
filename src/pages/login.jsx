@@ -39,6 +39,7 @@ function Login() {
         console.log("result", result);
         if (result.success) {
             localStorage.setItem("user-info", JSON.stringify(result));
+            
             toast.success("Login successful");
             navigate("/");
         }
