@@ -15,80 +15,17 @@ function Blogs() {
     const blogs = [
         {
           id: 1,
-          image: product1,
-          name: "The best way to wear a suit",
+          image: "/comodo.jpg",
+          name: "Komodo Dragon",
           content:
-            "the world of fashion is always changing and we are always on the cusp of it jnnj gre  regreg reg ergreg g reg.",
+            "The Komodo dragon is a large species of lizard found in the Indonesian islands of Komodo, Rinca, Flores, and Gili Motang. A member of the monitor lizard family, it is the largest living species of lizard, growing to a maximum length of 3 metres in rare cases and weighing up to approximately 70 kilograms. Their unusually large size has been attributed to island gigantism, since there are no other carnivorous animals to fill the niche on the islands where they live. However, recent research suggests the large size of Komodo dragons may be better understood as representative of a relict population of very large varanid lizards that once lived across Indonesia and Australia, most of which, along with other megafauna, died out after the Pleistocene. Fossils very similar to V. komodoensis have been found in Australia dating to greater than 3.8 million years ago, and its body size remained stable on Flores, one of the handful of Indonesian islands where it is currently found, over the last 900,000 years, ",
           likes: 12,
           saves: 20,
-        },
-        {
-          id: 2,
-          image: product2,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 3,
-          image: product3,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 4,
-          image: product4,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 5,
-          image: product5,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 6,
-          image: product6,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 7,
-          image: product7,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        { 
-          id: 8,
-          image: product8,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 9,
-          image: product9,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
-        {
-          id: 10,
-          image: product10,
-          name: "The best way to wear a suit",
-          content:
-            "the world of fashion is always changing and we are always on the cusp of it.",
-        },
+        }
       ];
   return (
-    <div className="mt-10 mx-20    flex flex-col gap-5 justify-center items-center   ">
-      <div className="  w-full relative bg-white rounded-xl   shadow-sm  ">
+    <div className="mt-10 mx-20 bg-white   flex flex-col gap-5 justify-center items-center   ">
+      <div className="  w-full relative  rounded-xl   shadow-sm  ">
        <div className=" py-32 ">
        <div className=" text-center flex flex-col gap-2 justify-center items-center">
           <h1 className="text-4xl  font-semibold text-black leading-tight text-center">
@@ -132,7 +69,7 @@ function Blogs() {
           {blogs.map((Blogs) => (
             <div
               key={Blogs.id}
-              className="relative shadow-sm rounded-lg bg-white"
+              className="relative  rounded-lg bg-white"
             >
               <div className="p-3  ">
                 <img
@@ -144,27 +81,31 @@ function Blogs() {
 
               <div className=" bottom-5 flex justify-between  items-end   text-start bg-white px-5 mb-3 ">
                 <div>
-                  <p className=" text-lg font-semibold ">{Blogs.name}</p>
-                  <p className="text-md  line-clamp-2 text-slate-600 ">
+                  <p className="  font-semibold ">{Blogs.name}</p>
+                  <p className="  line-clamp-2 text-slate-600 text-xs ">
                     {Blogs.content}
                   </p>
+                  
                 </div>
+                
+                
               </div>
+              
               <div className="px-5 mb-3 flex justify-between gap-5 items-center ">
-                <div className="flex  gap-5">
-                <Tooltip title="likes" arrow>
+                {/* <div className="flex  gap-5">
+                
                   <Heart className="hover:text-red-500 cursor-pointer " />
-                  </Tooltip>
-                  <Tooltip title="save" arrow>
+                 
                   <Bookmark className="hover:text-black/50 cursor-pointer" />
-                  </Tooltip>
-                </div>
+                  
+                </div> */}
 
-                <div className="group text-black transition duration-300 cursor-pointer">
+                <div className="group text-black transition mt-2 duration-300 cursor-pointer text-sm">
                   read more
                   <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
                 </div>
               </div>
+             
             </div>
           ))}
         </div>

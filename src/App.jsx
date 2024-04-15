@@ -15,7 +15,7 @@ import Footer from "./components/footer";
 import {Routes, Route} from "react-router-dom";
 function App() {
   return (
-    <div className="font-BeVietnam  bg-slate-100 text-slate-700 w-full ">
+    <div className="font-BeVietnam   text-slate-700 w-full ">
       <Nav/>
       <Routes>
         <Route path="/" element={<Home />} />

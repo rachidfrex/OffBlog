@@ -74,11 +74,17 @@ function Editeprofile() {
                   placeholder="bio"
                   maxLength="200"
                   onChange={handleTextChange}
-                  className="w-full resize-none md:w-[515px] text-sm   bg-slate-100 bg-grey p-3  pl-6  rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50  "
+                  className="w-full resize-none md:w-[515px] text-sm   bg-slate-100 bg-grey p-3  pl-6  rounded-lg placeholder:text-slate-500  "
                 ></textarea>
                 <span className=" text-sm text-slate-500  mt-1">
                   {textCounter} characters remaining
                 </span>
+              </div>
+              <div>
+                <select name="" id="" className="rounded ">
+                  <option value="">Country</option>
+                  <option value="">mororcoo</option>
+                </select>
               </div>
             </form>
           </div>
