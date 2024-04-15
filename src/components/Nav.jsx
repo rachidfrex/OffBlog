@@ -76,7 +76,7 @@ function Nav() {
           <Link to="/faq " className=' md:text-base navlinks'>FAQ</Link>
           {
             isUser ? (
-              <Link to="/profile" className=' md:text-base navlinks '>Profile</Link>
+              <Link to="/profile" className=' md:text-base  md:hidden navlinks '>Profile</Link>
             ) : (
               <>
                 <Link to="/login" className=' md:text-base navlinks'>Login</Link>

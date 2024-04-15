@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
+
 function Dashboard() {
   //if the user is not logged in, redirect to the login page
   const navigate = useNavigate();

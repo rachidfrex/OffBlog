@@ -8,6 +8,7 @@ import Register from "./pages/register";
 // this is the dashboard page routs 
 import Editeprofile from "./components/editeprofile";
 import Changepassword from "./components/changepassword";
+import Protected from "./components/protected";
 // end of the dashboard page routs
 import Dashboard from "./pages/dashboard";
 import Footer from "./components/footer";
@@ -25,10 +26,10 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/testblogs" element={<Blog />} />
-                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogs" element={<Protected Cmp={Blogs} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/dashboard" element={<Dashboard />} >
+                <Route path="/dashboard"  element={<Protected Cmp={Dashboard} />} >
                     <Route path="/dashboard/edit-profile" element={<Editeprofile />} />
                     <Route path="/dashboard/change-password" element={<Changepassword />} />
                 </Route>
