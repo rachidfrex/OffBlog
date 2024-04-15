@@ -10,12 +10,21 @@ import { useRef } from 'react';
 
 // material ui drawer
 
-
 function Nav() {
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
+// if the user is logged in it should hide the login and register button and show the profile button
+
+
+  useEffect(() => {
+    document.addEventListener('mousedown', (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setMenu(false);
+      }
+    });
+  }, []);
   
  
  

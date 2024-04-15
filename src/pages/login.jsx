@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye } from 'lucide-react';
 import { Toaster } from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     // login function
     const handleLogin = async (e) => {
@@ -29,6 +31,7 @@ function Login() {
         if (result.success) {
             localStorage.setItem("user-info", JSON.stringify(result));
             toast.success("Login successful");
+            navigate("/dashboard");
         }
         else {
 
