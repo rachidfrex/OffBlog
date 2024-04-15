@@ -7,9 +7,8 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [image, setImage] = useState(null);
 
   const navigate = useNavigate();
   // check if the user is logged in
