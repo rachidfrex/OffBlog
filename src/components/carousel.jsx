@@ -74,7 +74,7 @@ function Carousel() {
       }, []);
     
   return (
-    <div className=" w-full relative px-20  overflow-hidden  rounded-lg mt-10  " ref={comp}>
+    <div className=" w-full relative px-10 md:px-20  overflow-hidden  rounded-lg mt-10  " ref={comp}>
       <div className="fade-in" key={index}>
         <img
           src={banners[index].image}

@@ -8,8 +8,7 @@ function Protected(props) {
 
     useEffect(() => {
         if (!user) {
-            // If the user is not authenticated, navigate to the login page.
-            navigate('/login');
+            navigate('/login', { replace: true });
         }
     }, [user, navigate]);
 

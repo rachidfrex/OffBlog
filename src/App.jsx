@@ -10,6 +10,7 @@ import Editeprofile from "./components/editeprofile";
 import Changepassword from "./components/changepassword";
 import Protected from "./components/protected";
 // end of the dashboard page routs
+import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
 import Footer from "./components/footer";
 import {Routes, Route} from "react-router-dom";
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/dashboard/edit-profile" element={<Editeprofile />} />
                     <Route path="/dashboard/change-password" element={<Changepassword />} />
                 </Route>
+                <Route path="/about" element={<About />} />
             </Routes>
             { !hideOnRoutes.includes(location.pathname) && <Footer /> }
         </div>
