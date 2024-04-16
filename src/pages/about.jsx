@@ -3,7 +3,7 @@ import GetBlogs from '../components/getBlogs'
 
 function About() {
   return (
-    <div>
+    <div className='px-10'>
         <GetBlogs />
     </div>
   )

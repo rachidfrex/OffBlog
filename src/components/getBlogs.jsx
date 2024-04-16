@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
 import Tooltip from "@mui/material/Tooltip";
-import Skeleton from '../components/Skeleton'
+import Skeleton from "../components/Skeleton";
 
 function GetBlogs() {
   const [allblogs, setAllBlogs] = useState([]);
@@ -19,7 +20,7 @@ function GetBlogs() {
     });
     blogs = await blogs.json();
     setAllBlogs(blogs);
-    console.log( 'blogs', blogs);
+    console.log("blogs", blogs);
     setIsLoading(true);
   };
 
@@ -29,20 +30,18 @@ function GetBlogs() {
 
   return (
     <div>
-       { !isLoading ? (
-        <div className="grid grid-cols-4 gap-4 py-5  ">
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            
-          </div>):(
-            <div className="grid grid-cols-4 gap-4 py-5 ">
+      {!isLoading ? (
+        // grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 gap-4 max-w-[1280px]
+        <div className=" py-5  grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 gap-4 max-w-[1280px]">
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
+      ) : (
+        <div className="py-5  grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  grid-cols-1 gap-4 max-w-[1280px]">
           {allblogs.map((Blogs) => (
-            <div
-              key={Blogs.id}
-              className="relative  rounded-lg bg-white"
-            >
+            <div key={Blogs.id} className="relative  rounded-lg bg-white">
               <div className=" ">
                 <img
                   className="object-cover rounded-md h-40  aspect-video w-full bg-black/30  "
@@ -57,28 +56,23 @@ function GetBlogs() {
                   <p className="  line-clamp-2 text-slate-600 text-xs ">
                     {Blogs.content}
                   </p>
-                  
                 </div>
-                
-                
               </div>
-              
-              <div className=" mb-3 flex justify-between gap-5 items-center ">
-               
 
+              <div className=" mb-3 flex justify-between gap-5 items-center ">
                 <div className="group text-black transition mt-2 duration-300 cursor-pointer text-sm">
-                  read more
+                  <Link to={`/Blog/${Blogs.id}`}>
+                    {" "}
+                    {/* Replace `blog.id` with the id of the blog post */}
+                    read more
+                  </Link>
                   <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
                 </div>
               </div>
-             
             </div>
           ))}
         </div>
-            )
-            }
-
-      
+      )}
     </div>
   );
 }

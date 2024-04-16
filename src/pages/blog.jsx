@@ -5,8 +5,9 @@ import { Bookmark } from "lucide-react";
 import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect ,useState } from "react";
 function Blog() {
+  const [theblog, setTheBlog] = useState({});
 
   const { id } = useParams();
   const getblogByid = async () => {
@@ -19,6 +20,7 @@ function Blog() {
     });
     blog = await blog.json();
     console.log("blog", blog);
+    setTheBlog(blog);
   }
   useEffect(() => {
     getblogByid();
@@ -60,21 +62,24 @@ function Blog() {
           tage 3
         </span>
       </div>
-      {/* this is the blogs title */}
-      <div className="">
+        {/* this is the blog start */}
+        
+      <div>
+        {/* this is the blogs title */}
+        <div className="flex justify-center py-5">
         <h1 className=" text-3xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-[700px]  font-semibold ">
-          how to use message app to comunicate and share
+          {theblog.title}
         </h1>
       </div>
       {/* this is the blogs date realsed or write day  */}
-      <div className="flex justify-center items-center gap-3">
+      <div className="flex justify-center items-center gap-3 py-3">
         <p className="text-center text-slate-500  text-sm">March 20, 2021</p>
         <p className="text-center text-slate-500  text-sm">8:12 AM</p>
       </div>
       {/* this is the blogs image */}
       <div className="px-5">
         <img
-          src={login}
+          src={theblog.image_url}
           className=" object-center  h-[480px]   w-full rounded-xl  aspect-video "
         />
       </div>
@@ -89,35 +94,14 @@ function Blog() {
           </ul>
         </div>
         <div className="col-span-8 text-justify">
-          <h1 className="text-3xl font-bold mb-4">Introduction</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
-            mauris vel nunc aliquam, id lacinia nisl tincidunt. Sed auctor, nisl
-            nec consequat tincidunt, nunc nunc tincidunt urna, id lacinia nisl
-            justo id mauris. Sed euismod mauris vel nunc aliquam, id lacinia
-            nisl tincidunt. Sed auctor, nisl nec consequat tincidunt, nunc nunc
-            tincidunt urna, id lacinia nisl justo id mauris.
-          </p>
-          <h2 className="text-2xl font-bold mt-6 mb-4">Main Section</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
-            mauris vel nunc aliquam, id lacinia nisl tincidunt. Sed auctor, nisl
-            nec consequat tincidunt, nunc nunc tincidunt urna, id lacinia nisl
-            justo id mauris. Sed euismod mauris vel nunc aliquam, id lacinia
-            nisl tincidunt. Sed auctor, nisl nec consequat tincidunt, nunc nunc
-            tincidunt urna, id lacinia nisl justo id mauris.
-          </p>
-          <h3 className="text-xl font-bold mt-6 mb-4">Sub Section</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
-            mauris vel nunc aliquam, id lacinia nisl tincidunt. Sed auctor, nisl
-            nec consequat tincidunt, nunc nunc tincidunt urna, id lacinia nisl
-            justo id mauris. Sed euismod mauris vel nunc aliquam, id lacinia
-            nisl tincidunt. Sed auctor, nisl nec consequat tincidunt, nunc nunc
-            tincidunt urna, id lacinia nisl justo id mauris.
+          <p className="">
+            {theblog.content}
           </p>
         </div>
       </div>
+      
+      </div>
+      {/* this is the end of the blogs  */}
       {/* this is the blogs Comments */}
       <div className="flex flex-col justify-start items-start gap-5 px-40 w-full ">
         <h1 className="text-2xl font-bold">Comments (2)</h1>
