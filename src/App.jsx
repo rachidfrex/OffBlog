@@ -26,7 +26,7 @@ function App() {
             { !hideOnRoutes.includes(location.pathname) && <Nav /> }
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/testblogs" element={<Blog />} />
+                <Route path="/getBlog/{id}" element={<Blog />} />
                 <Route path="/blogs" element={<Protected Cmp={Blogs} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />

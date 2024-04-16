@@ -4,7 +4,24 @@ import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
 import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
+import { useParams } from "react-router-dom";
 function Blog() {
+
+  const { id } = useParams();
+  const getblogByid = async () => {
+    let blog = await fetch(`http://localhost:8000/api/getBlog/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    blog = await blog.json();
+    console.log("blog", blog);
+  }
+
+
+    
   
   return (
     <div className="mt-10 mx-5 max-w-[1536px]   md:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
