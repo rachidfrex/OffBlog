@@ -1,16 +1,5 @@
-import product1 from "../assets/images/products/product1.jpg";
-import product2 from "../assets/images/products/product2.png";
-import product3 from "../assets/images/products/product3.jpg";
-import product4 from "../assets/images/products/product4.png";
-import product5 from "../assets/images/products/product5.png";
-import product6 from "../assets/images/products/product6.jpg";
-import product7 from "../assets/images/products/product7.jpg";
-import product8 from "../assets/images/products/product8.jpg";
-import product9 from "../assets/images/products/product9.jpg";
-import product10 from "../assets/images/products/product10.jpg";
-import { Heart } from "lucide-react";
-import { Bookmark } from "lucide-react";
-import Tooltip from "@mui/material/Tooltip";
+import GetBlogs from "../components/getBlogs";
+
 function Blogs() {
     const blogs = [
         {
@@ -65,50 +54,7 @@ function Blogs() {
             </select>
           </div>
        </div>
-        <div className="grid grid-cols-4 gap-4 py-5 ">
-          {blogs.map((Blogs) => (
-            <div
-              key={Blogs.id}
-              className="relative  rounded-lg bg-white"
-            >
-              <div className="p-3  ">
-                <img
-                  className="object-cover rounded-md  aspect-video w-full bg-black/30  "
-                  src={Blogs.image}
-                  alt={Blogs.name}
-                />
-              </div>
-
-              <div className=" bottom-5 flex justify-between  items-end   text-start bg-white px-5 mb-3 ">
-                <div>
-                  <p className="  font-semibold ">{Blogs.name}</p>
-                  <p className="  line-clamp-2 text-slate-600 text-xs ">
-                    {Blogs.content}
-                  </p>
-                  
-                </div>
-                
-                
-              </div>
-              
-              <div className="px-5 mb-3 flex justify-between gap-5 items-center ">
-                {/* <div className="flex  gap-5">
-                
-                  <Heart className="hover:text-red-500 cursor-pointer " />
-                 
-                  <Bookmark className="hover:text-black/50 cursor-pointer" />
-                  
-                </div> */}
-
-                <div className="group text-black transition mt-2 duration-300 cursor-pointer text-sm">
-                  read more
-                  <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black"></span>
-                </div>
-              </div>
-             
-            </div>
-          ))}
-        </div>
+       <GetBlogs />
         {/* do the  pagination using tailwind */}
         <div className="flex justify-center items-center mt-5">
             <button className="bg-black text-white px-4 py-2 rounded-md mr-2">Previous</button>
