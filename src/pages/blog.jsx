@@ -5,6 +5,7 @@ import { Bookmark } from "lucide-react";
 import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 function Blog() {
 
   const { id } = useParams();
@@ -19,6 +20,9 @@ function Blog() {
     blog = await blog.json();
     console.log("blog", blog);
   }
+  useEffect(() => {
+    getblogByid();
+  }, [id]); 
 
 
     

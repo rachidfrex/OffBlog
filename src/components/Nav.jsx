@@ -79,7 +79,6 @@ function Nav() {
                 <X size={30} className='hover:text-red-500' onClick={() => setMenu(false)} />
               </button>
           </div>
-          <Link to="/testblogs" className=' md:text-base navlinks  ' >testblogs</Link>
           <Link to="/blogs " className=' md:text-base navlinks'>Blogs</Link>
           <Link to="/about " className=' md:text-base navlinks'>About</Link>
           <Link to="/faq " className=' md:text-base navlinks'>FAQ</Link>
