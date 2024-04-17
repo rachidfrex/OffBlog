@@ -10,6 +10,9 @@ function CreateBloge() {
   const handelsubmit = () => {
     console.log(title, content, user_id, category_id, image_url);
   }
+  const handelchageimage = (e) => {
+    setImage(e.target.files[0]);
+  }
   return (
     <div className="flex flex-col gap-2 justify-center items-center h-screen">
       <div className=" max-w-[515px]  gap-2 flex flex-col w-full  ">
@@ -49,7 +52,7 @@ function CreateBloge() {
         <input
           type="file"
           value={image_url}
-          onChange={(e) => setImage(e.target.value)}
+          onChange={handelchageimage}
           placeholder="image"
           className="md:w-auto text-sm w-full bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
         />
