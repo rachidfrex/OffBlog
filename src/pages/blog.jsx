@@ -77,10 +77,10 @@ function Blog() {
         <p className="text-center text-slate-500  text-sm">8:12 AM</p>
       </div>
       {/* this is the blogs image */}
-      <div className="px-5">
+      <div className="px-5 w- full flex justify-center">
         <img
-          src={theblog.image_url}
-          className=" object-center  h-[480px]   w-full rounded-xl  aspect-video "
+         src={`http://localhost:8000${theblog.image_url}`}
+          className=" object-center  h-[480px] max-w-[1000px]    w-full rounded-xl  aspect-video "
         />
       </div>
       {/* this is the blogs content */}
