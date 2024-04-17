@@ -10,7 +10,7 @@ import BlogSkeleton from "../components/blogSkeleton";
 
 function Blog() {
   const [theblog, setTheBlog] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const getblogByid = async () => {
     let blog = await fetch(`http://localhost:8000/api/getBlog/${id}`, {
@@ -23,6 +23,7 @@ function Blog() {
     blog = await blog.json();
     console.log("blog", blog);
     setTheBlog(blog);
+    setIsLoading(!isLoading);
   }
   useEffect(() => {
     getblogByid();
@@ -67,8 +68,12 @@ function Blog() {
         {/* this is the blog start */}
         
       {isLoading ? (
-        
-        <BlogSkeleton />
+        <>
+         <BlogSkeleton />
+         <p>loakn fw f </p>
+        </>
+       
+
       ) : (
         <div>
         {/* this is the blogs title */}
