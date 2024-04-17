@@ -28,17 +28,17 @@ const navigate = useNavigate();
     formData.append("content", content);
     formData.append("user_id", user_id);
     formData.append("category_id", category_id);
-    formData.append("image_url", image_url); // Append the image file to the form data
+    formData.append("image_url", image_url);
   
     let result = await fetch("http://localhost:8000/api/createBlog", {
       method: "POST",
-      body: formData, // Send the form data
+      body: formData,
     });
     result = await result.json();
   
     if (result.success) {
       console.log("result", result);
-      navigate("/about"); // Replace with the path you want to navigate to after successful blog creation
+      navigate("/about");
     } else {
       console.log("error:", result.error);
       toast.error(result.error);
