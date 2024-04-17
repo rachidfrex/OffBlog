@@ -80,12 +80,7 @@ function Editeprofile() {
                   {textCounter} characters remaining
                 </span>
               </div>
-              <div>
-                <select name="" id="" className="rounded ">
-                  <option value="">Country</option>
-                  <option value="">mororcoo</option>
-                </select>
-              </div>
+              
             </form>
           </div>
         </div>

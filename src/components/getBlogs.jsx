@@ -27,7 +27,8 @@ function GetBlogs() {
   useEffect(() => {
     handelGetBlogs();
   }, []);
-
+  let image = allblogs.map((Blogs) => Blogs.image_url);
+  console.log("image", image);
   return (
     <div>
       {!isLoading ? (
@@ -45,7 +46,7 @@ function GetBlogs() {
               <div className=" ">
                 <img
                   className="object-cover rounded-md h-40  aspect-video w-full bg-black/30  "
-                  src={Blogs.image_url}
+                  src={`http://localhost:8000${Blogs.image_url}`}
                   alt={Blogs.title}
                 />
               </div>
