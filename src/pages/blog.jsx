@@ -6,9 +6,11 @@ import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
 import { useParams } from "react-router-dom";
 import { useEffect ,useState } from "react";
+import BlogSkeleton from "../components/blogSkeleton";
+
 function Blog() {
   const [theblog, setTheBlog] = useState({});
-
+  const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const getblogByid = async () => {
     let blog = await fetch(`http://localhost:8000/api/getBlog/${id}`, {
@@ -64,7 +66,11 @@ function Blog() {
       </div>
         {/* this is the blog start */}
         
-      <div>
+      {isLoading ? (
+        
+        <BlogSkeleton />
+      ) : (
+        <div>
         {/* this is the blogs title */}
         <div className="flex justify-center py-5">
         <h1 className=" text-3xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-[700px]  font-semibold ">
@@ -101,7 +107,11 @@ function Blog() {
       </div>
       
       </div>
-      {/* this is the end of the blogs  */}
+     
+      )
+      
+      }
+       {/* this is the end of the blogs  */}
       {/* this is the blogs Comments */}
       <div className="flex flex-col justify-start items-start gap-5 px-40 w-full ">
         <h1 className="text-2xl font-bold">Comments (2)</h1>
