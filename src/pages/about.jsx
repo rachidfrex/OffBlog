@@ -1,10 +1,10 @@
 import React from 'react'
-import GetBlogs from '../components/getBlogs'
+import CreateBloge from '../components/createBloge'
 
 function About() {
   return (
     <div className='px-10'>
-        <GetBlogs />
+      <CreateBloge />
     </div>
   )
 }
