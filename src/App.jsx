@@ -9,6 +9,7 @@ import Register from "./pages/register";
 import Editeprofile from "./components/editeprofile";
 import Changepassword from "./components/changepassword";
 import Protected from "./components/protected";
+import BlogEditor from "./components/blogEditor";
 // end of the dashboard page routs
 import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/dashboard/edit-profile" element={<Editeprofile />} />
                     <Route path="/dashboard/change-password" element={<Changepassword />} />
                 </Route>
+                <Route path="/editor" element={<BlogEditor />} />
                 <Route path="/about" element={<About />} />
             </Routes>
             { !hideOnRoutes.includes(location.pathname) && <Footer /> }
