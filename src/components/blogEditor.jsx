@@ -14,7 +14,12 @@ function BlogEditor() {
 
   // useEffect
   useEffect(() => {
-    let editor = new EditorJS
+    let editor = new EditorJS({
+      holder: "textEditor",
+      data: '',
+      tools: tools,
+      placeholder: "Let`s write",
+    });
      },[])
 
   const [banner, setBanner] = useState(bannerimg); 
