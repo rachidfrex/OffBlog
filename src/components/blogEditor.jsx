@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
-import { Feather } from "lucide-react";
+import { Edit, Feather } from "lucide-react";
 import bannerimg from "../assets/images/blog banner.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { EdidoreContext } from "./editorPage";
 import { toast } from "react-hot-toast";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";  
+import EditorJS from "@editorjs/editorjs";
+
 function BlogEditor() {
   let {blog ,blog :{title ,image_url,content,category,user_id ,des },setBlog}= useContext(EdidoreContext);
+
+
+  // useEffect
+  useEffect(() => {
+    let editor = new EditorJS
+     },[])
 
   const [banner, setBanner] = useState(bannerimg); 
 
