@@ -17,7 +17,7 @@ function BlogEditor() {
     let editor = new EditorJS({
       holder: "textEditor",
       data: '',
-      tools: tools,
+      // tools: tools,
       placeholder: "Let`s write",
     });
      },[])
