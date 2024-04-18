@@ -2,15 +2,30 @@ import { Link } from "react-router-dom";
 import { Feather } from "lucide-react";
 import bannerimg from "../assets/images/blog banner.png";
 import { useState } from "react";
-
+import { useContext } from "react";
+import { EdidoreContext } from "./editorPage";
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 function BlogEditor() {
+  let {blog ,blog :{title ,image_url,content,category,user_id ,des },setBlog}= useContext(EdidoreContext);
 
   const [banner, setBanner] = useState(bannerimg); 
+
 
   const handelBnnerUpload = (e) => {
     let img = e.target.files[0]; 
     console.log(img);
-    setBanner(URL.createObjectURL(img));
+    if(img){
+      setBanner(URL.createObjectURL(img));
+      toast.success("image uploaded successfully"); 
+    }else{
+      toast.error("image not uploaded");
+      }
+
+
+
+    setBlog({...blog, image_url: banner});
+
   };
   const handelTitleKeyDonw = (e) => {
     if(e.keyCode === 13){
@@ -21,15 +36,20 @@ function BlogEditor() {
     let title = e.target;
   title.style.height = "auto";
   title.style.height = title.scrollHeight + "px";
+  setBlog({...blog, title: title.value});
   };
+  console.log(blog);
+
   return (
     <>
+
       <nav className="navbar">
+      <Toaster position="top-right" reverseOrder={false} />
         <Link to="/" className="flex-none w-5  ">
           <Feather />
         </Link>
         <p className="max-md:hiddnen text-black line-clamp-1 w-full">
-          new blog
+          {title.length ? title : "new blog"}
         </p>
         <div className="flex gap-4 ml-auto">
           <button className="btn-dark py-2 text-sm">publish</button>
@@ -51,7 +71,12 @@ function BlogEditor() {
              onKeyDown={handelTitleKeyDonw}
              onChange={handelTitleChange}
              name="" id=""  ></textarea>
+          <hr className="w-full  opacity-80 my-5" />
+          <div id="textEditor" className="">
+
           </div>
+          </div>
+
         </div>
       </section>
     </>
