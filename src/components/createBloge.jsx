@@ -95,7 +95,7 @@ function CreateBloge() {
           <input
             type="text"
             value={category_name.join(', ')}
-            onChange={(e) => setCategory_name(e.target.value.split(','))}
+            onChange={(e) => setCategory_name(e.target.value.split(', '))}
             placeholder="category names (comma separated)"
             className="md:w-auto text-sm w-full bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
           />
