@@ -7,48 +7,15 @@ import { useNavigate } from "react-router-dom";
 function CreateBloge() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [user_id, setUser_id] = useState("");
-  const [category_name, setCategory_name] = useState("");
+  const [category_name, setCategory_name] = useState([]);
   const [image_url, setImage] = useState("");
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handelchageimage = (e) => {
     setImage(e.target.files[0]);
   };
-  // const submitdata = async (e) => {
-  //   e.preventDefault();
-  //   if (!title || !content || !user_id || !category_id || !image_url) {
-  //     toast.error("All fields are required.");
-  //     return;
-  //   }
-  //   const user_id = localStorage.getItem('user_id');
-  // if (!user_id) {
-  //   toast.error("User is not logged in.");
-  //   return;
-  // }
-  
-  //   let formData = new FormData();
-  //   formData.append("title", title);
-  //   formData.append("content", content);
-  //   formData.append("user_id", user_id);
-  //   formData.append("category_id", category_id);
-  //   formData.append("image_url", image_url);
-  
-  //   let result = await fetch("http://localhost:8000/api/createBlog", {
-  //     method: "POST",
-  //     body: formData,
-  //   });
-  //   result = await result.json();
-  
-  //   if (result.success) {
-  //     console.log("result", result);
-  //     navigate("/about");
-  //   } else {
-  //     console.log("error:", result.error);
-  //     toast.error(result.error);
-  //   }
-  // };
+
   const submitdata = async (e) => {
     e.preventDefault();
   
@@ -56,11 +23,13 @@ const navigate = useNavigate();
     const userInfo = JSON.parse(localStorage.getItem('user-info'));
     // Extract user_id from userInfo, or set it to null if userInfo is not available
     const user_id = userInfo ? userInfo.user_id : null;
+
   
-    if (!title || !content || !user_id || !category_name || !image_url) {
+    if (!title || !content || !user_id || category_name.length === 0 || !image_url) {
       toast.error("All fields are required.");
       return;
     }
+    console.log(category_name)
   
     if (!user_id) {
       toast.error("User is not logged in.");
@@ -71,7 +40,7 @@ const navigate = useNavigate();
     formData.append("title", title);
     formData.append("content", content);
     formData.append("user_id", user_id);
-    formData.append("category_name", category_name);
+    formData.append("categories", JSON.stringify(category_name));
     formData.append("image_url", image_url);
   
     let result = await fetch("http://localhost:8000/api/createBlog", {
@@ -90,9 +59,6 @@ const navigate = useNavigate();
       toast.error(result.error);
     }
   };
-  
-  // console.log("user_id", user_id);
-
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center h-screen">
@@ -121,22 +87,11 @@ const navigate = useNavigate();
             placeholder="content"
             className="w-full resize-none md:w-[515px] text-sm   bg-slate-100 bg-grey p-3  pl-6  rounded-lg placeholder:text-slate-500  "
           ></textarea>
-
-          
-        { /*
-        <input
-            type="text"
-            value={user_id}
-            onChange={(e) => setUser_id(e.target.value)}
-            placeholder="user_id"
-            className="md:w-auto text-sm w-full bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
-          />
-        */}
           <input
             type="text"
-            value={category_name}
-            onChange={(e) => setCategory_name(e.target.value)}
-            placeholder="category name"
+            value={category_name.join(', ')}
+            onChange={(e) => setCategory_name(e.target.value.split(', '))}
+            placeholder="category names (comma separated)"
             className="md:w-auto text-sm w-full bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
           />
           <input
