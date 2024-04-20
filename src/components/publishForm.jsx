@@ -4,6 +4,7 @@ import { EdidoreContext } from "./editorPage";
 import Tags from './tags';
 function PublishForm() {
     const characterLimit = 200;
+    let tageLimit = 7;
     let {blog ,blog:{title ,image_url,content,category,user_id ,des} ,setEditorState ,setBlog} = useContext(EdidoreContext);
     const handekCloseEvent = () => {
         setEditorState("editor");
@@ -27,11 +28,23 @@ function PublishForm() {
     const handelKeyDown = (e) => {
         if(e.keyCode === 13 || e.keyCode === 188){
             e.preventDefault();
-            let tag = e.target.value;
-            console.log(tag);
-          
+            let tags = e.target.value;
+            if(category.length < tageLimit ){
+               if(!category.includes(tags) && tags.length ){
+                     setBlog({...blog, category: [...category, tags]});
+                     e.target.value = "";    
+               }if(category.includes(tags)){
+                   toast.error("tag already exist");
+               }if(!tags.length){
+                   toast.error("tag cannot be empty");
+               }
+             
+            }else{
+                toast.error(`you can only add ${tageLimit} tags`);
             }
          }
+         console.log('the tags',category);
+    }
   return (
     <>
     <section className='w-screen min-h-screen grid items-center lg:grid-cols-2 py-16 lg:gap-4'>
@@ -72,16 +85,15 @@ function PublishForm() {
                 <input type="text" placeholder='category' 
                 onKeyDown={handelKeyDown}
                 className='sticky input-box bg-white top-0 left-0 pl-4 mb-3 focus:bg-white'/>
-                {
-                    category.map((tag ,index) => (
-                        <Tags key={index} tags={tag} />
-                    ))
-                }
+                {category.map((tag, index) => { 
+                    return <Tags key={index} tags={tag} />
+                })}
             </div>
         </div>
     </section>
     </>
   )
 }
+
 
 export default PublishForm
