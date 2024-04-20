@@ -1,5 +1,6 @@
+import React, { memo } from 'react';
 import { Link } from "react-router-dom";
-import { Edit, Feather } from "lucide-react";
+import { Feather } from "lucide-react";
 import bannerimg from "../assets/images/blog banner.png";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -7,21 +8,24 @@ import { EdidoreContext } from "./editorPage";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";  
 import EditorJS from "@editorjs/editorjs";
+import { tools } from "../components/tool.component";
 
 function BlogEditor() {
-  let {blog ,blog :{title ,image_url,content,category,user_id ,des },setBlog}= useContext(EdidoreContext);
+  let {blog ,blog :{title ,image_url,content,category,user_id ,des },setBlog , 
+textEditor , setTextEditor ,editorState , setEditorState}= useContext(EdidoreContext);
 
 
-  // useEffect
-  useEffect(() => {
-    let editor = new EditorJS({
-      holder: "textEditor",
-      data: '',
-      // tools: tools,
-      placeholder: "Let`s write",
-    });
-     },[])
+useEffect(() => {
+  // console.log("textEditor", textEditor);
+  setTextEditor(new EditorJS({
+    holder:"textEditor",
+    data: '',
+    tools: tools,
+    placeholder: "Let`s write a awesome blog post!"
+  }))
+   },[setTextEditor ])
 
+ 
   const [banner, setBanner] = useState(bannerimg); 
 
 
@@ -51,7 +55,28 @@ function BlogEditor() {
   title.style.height = title.scrollHeight + "px";
   setBlog({...blog, title: title.value});
   };
-  console.log(blog);
+  const handelPublishEvent = async () => {
+    if(!blog.image_url.length){
+      return toast.error("please upload a banner image");
+    }
+    if(!blog.title.length){
+      return toast.error("please enter a title");
+    }
+    if(textEditor.isReady){
+      textEditor.save().then(data => {
+        console.log(data);
+        if(data.blocks.length){
+          setBlog({...blog, content: data.blocks});
+          // setEditorState("publish");
+          console.log('blog 1',blog);
+        }else{
+          toast.error("please write some content");
+        }
+      })
+    }
+    console.log( 'blog 2 ',blog);
+  }
+ 
 
   return (
     <>
@@ -65,7 +90,9 @@ function BlogEditor() {
           {title.length ? title : "new blog"}
         </p>
         <div className="flex gap-4 ml-auto">
-          <button className="btn-dark py-2 text-sm">publish</button>
+          <button className="btn-dark py-2 text-sm"
+          onClick={handelPublishEvent}
+          >publish</button>
           <button className="btn-light py-2 text-sm">save draft</button>
         </div>
       </nav>
@@ -84,10 +111,11 @@ function BlogEditor() {
              onKeyDown={handelTitleKeyDonw}
              onChange={handelTitleChange}
              name="" id=""  ></textarea>
+             
           <hr className="w-full  opacity-80 my-5" />
-          <div id="textEditor" className="">
+          <div id="textEditor" className=""></div>
+      
 
-          </div>
           </div>
 
         </div>

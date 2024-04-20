@@ -3,7 +3,6 @@ import BlogEditor from './blogEditor';
 import { useState } from 'react';
 import { json, useNavigate } from 'react-router-dom';
 import { createContext } from 'react';
-import { Edit } from 'lucide-react';
 const blogStructure = {
     title: "",
     image_url: "",
@@ -16,6 +15,7 @@ const blogStructure = {
 function EditorPage() {
     const [blog, setBlog] = useState(blogStructure);
     const [editorState ,setEditorState] = useState("editor");
+    const [textEditor, setTextEditor] = useState({isReady: false});
     const navigate = useNavigate();
     let user = JSON.parse(localStorage.getItem("user-info"));
 
@@ -28,7 +28,7 @@ function EditorPage() {
 
 
     return (
-        <EdidoreContext.Provider value={{blog, setBlog, editorState, setEditorState}}>
+        <EdidoreContext.Provider value={{blog, setBlog, editorState, setEditorState ,textEditor , setTextEditor}}>
         {
             user ?
             editorState === "editor" ? <BlogEditor /> : <h1>Preview</h1>
