@@ -11,6 +11,13 @@
   },
   "dependencies": {
     "@editorjs/editorjs": "^2.29.1",
+    "@editorjs/embed": "^2.7.1",
+    "@editorjs/header": "^2.8.1",
+    "@editorjs/image": "^2.9.0",
+    "@editorjs/inline-code": "^1.5.0",
+    "@editorjs/list": "^1.9.0",
+    "@editorjs/marker": "^1.4.0",
+    "@editorjs/quote": "^2.6.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@flaticon/flaticon-uicons": "^3.2.1",
