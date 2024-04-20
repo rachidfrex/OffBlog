@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import BlogEditor from './blogEditor';
+import PublishForm from './publishForm';
 import { useState } from 'react';
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { createContext } from 'react';
+
 const blogStructure = {
     title: "",
     image_url: "",
@@ -31,7 +33,7 @@ function EditorPage() {
         <EdidoreContext.Provider value={{blog, setBlog, editorState, setEditorState ,textEditor , setTextEditor}}>
         {
             user ?
-            editorState === "editor" ? <BlogEditor /> : <h1>Preview</h1>
+            editorState === "editor" ? <BlogEditor /> : <PublishForm />
             : null
         }
         </EdidoreContext.Provider>
