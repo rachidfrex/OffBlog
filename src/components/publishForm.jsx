@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Toaster ,toast } from 'react-hot-toast'
 import { EdidoreContext } from "./editorPage";
-import { Tags } from 'lucide-react';
+import Tags from './tags';
 function PublishForm() {
     const characterLimit = 200;
     let {blog ,blog:{title ,image_url,content,category,user_id ,des} ,setEditorState ,setBlog} = useContext(EdidoreContext);
@@ -63,7 +63,7 @@ function PublishForm() {
             <div className='relative input-box bg-slate-200 pl-2 py-2 pb-4 '>
                 <input type="text" placeholder='category' 
                 className='sticky input-box bg-white top-0 left-0 pl-4 mb-3 focus:bg-white'/>
-                <Tags />
+                <Tags tags="test" />
             </div>
         </div>
     </section>
