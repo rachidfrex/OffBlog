@@ -66,13 +66,15 @@ useEffect(() => {
       textEditor.save().then(data => {
         console.log(data);
         if(data.blocks.length){
-          setBlog({...blog, content: data.blocks});
+          setBlog({...blog, content: data});
           // setEditorState("publish");
           console.log('blog 1',blog);
         }else{
           toast.error("please write some content");
         }
-      })
+      }).catch(err => {
+        console.log(err);
+        } )
     }
     console.log( 'blog 2 ',blog);
   }
