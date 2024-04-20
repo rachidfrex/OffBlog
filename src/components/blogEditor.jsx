@@ -29,6 +29,18 @@ useEffect(() => {
   const [banner, setBanner] = useState(bannerimg); 
 
 
+  // const handelBnnerUpload = (e) => {
+  //   let img = e.target.files[0]; 
+  //   console.log(img);
+  //   if(img){
+  //     let objectUrl = URL.createObjectURL(img);
+  //     setBanner(objectUrl);
+  //     toast.success("image uploaded successfully"); 
+  //     setBlog({...blog, image_url: banner});
+  //   }else{
+  //     toast.error("image not uploaded");
+  //     }
+  // };
   const handelBnnerUpload = (e) => {
     let img = e.target.files[0]; 
     console.log(img);
@@ -36,13 +48,13 @@ useEffect(() => {
       let objectUrl = URL.createObjectURL(img);
       setBanner(objectUrl);
       toast.success("image uploaded successfully"); 
-      setBlog({...blog, image_url: banner});
+      setBlog({...blog, image_url: objectUrl}); // set image_url to objectUrl directly
     }else{
       toast.error("image not uploaded");
-      }
+    }
   };
 
-  
+
   const handelTitleKeyDonw = (e) => {
     if(e.keyCode === 13){
       e.preventDefault();
@@ -69,10 +81,10 @@ useEffect(() => {
         console.log(data);
         if(data.blocks.length){
           setBlog({...blog, content: data});
-          // setEditorState("publish");
+          setEditorState("publish");
           console.log('blog 1',blog);
         }else{
-          toast.error("please write some content");
+          toast.error("please write some content ");
         }
       }).catch(err => {
         console.log(err);
@@ -106,12 +118,13 @@ useEffect(() => {
         <div className="mx-auto max-w-[900px] w-full">
           <div className="relative aspect-video bg-white border-4 border-slate-300 hover:opacity-80">
             <label htmlFor="uploadBanner">
-              <img src={banner} alt="" className="z-20"  />
+            <img src={blog.image_url ? blog.image_url : banner} alt="" className="z-20" />
               <input type="file" name="image" id="uploadBanner" accept=".png , .jpg ,jpeg " hidden onChange={handelBnnerUpload} />
             </label>
           </div>
           <div>
             <textarea
+            defaultValue={title}
             placeholder="blog title "
             className="text-4xl font-medium w-full  h-20 border-none  outline-none resize-none mt-10 leading-tight placeholder:opacity-40 overflow-hidden focus:ring-0 "
              onKeyDown={handelTitleKeyDonw}
