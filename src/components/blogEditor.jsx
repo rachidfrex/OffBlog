@@ -19,7 +19,7 @@ useEffect(() => {
   // console.log("textEditor", textEditor);
   setTextEditor(new EditorJS({
     holder:"textEditor",
-    data: '',
+    data: content,
     tools: tools,
     placeholder: "Let`s write a awesome blog post!"
   }))
