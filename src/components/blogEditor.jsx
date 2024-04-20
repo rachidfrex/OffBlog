@@ -33,17 +33,16 @@ useEffect(() => {
     let img = e.target.files[0]; 
     console.log(img);
     if(img){
-      setBanner(URL.createObjectURL(img));
+      let objectUrl = URL.createObjectURL(img);
+      setBanner(objectUrl);
       toast.success("image uploaded successfully"); 
+      setBlog({...blog, image_url: banner});
     }else{
       toast.error("image not uploaded");
       }
-
-
-
-    setBlog({...blog, image_url: banner});
-
   };
+
+  
   const handelTitleKeyDonw = (e) => {
     if(e.keyCode === 13){
       e.preventDefault();
@@ -55,6 +54,9 @@ useEffect(() => {
   title.style.height = title.scrollHeight + "px";
   setBlog({...blog, title: title.value});
   };
+  useEffect(() => {
+    console.log('blog', blog);
+  }, [blog]);
   const handelPublishEvent = async () => {
     if(!blog.image_url.length){
       return toast.error("please upload a banner image");
@@ -78,6 +80,8 @@ useEffect(() => {
     }
     console.log( 'blog 2 ',blog);
   }
+
+  
  
 
   return (
