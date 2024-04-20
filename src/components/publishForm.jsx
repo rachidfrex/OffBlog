@@ -24,11 +24,19 @@ function PublishForm() {
           e.preventDefault();
         }
          }
+    const handelKeyDown = (e) => {
+        if(e.keyCode === 13 || e.keyCode === 188){
+            e.preventDefault();
+            let tag = e.target.value;
+            console.log(tag);
+          
+            }
+         }
   return (
     <>
     <section className='w-screen min-h-screen grid items-center lg:grid-cols-2 py-16 lg:gap-4'>
         <Toaster />
-        <button className='w-12 h-12 absolute right-[5vw] z-10 top-[10%]  '
+        <button className='w-12 h-12 absolute right-[5vw]  top-[10%]  '
         onClick={handekCloseEvent}
         > 
             cancel
@@ -62,8 +70,13 @@ function PublishForm() {
             <p className='mb-2 mt-9'> category  </p>
             <div className='relative input-box bg-slate-200 pl-2 py-2 pb-4 '>
                 <input type="text" placeholder='category' 
+                onKeyDown={handelKeyDown}
                 className='sticky input-box bg-white top-0 left-0 pl-4 mb-3 focus:bg-white'/>
-                <Tags tags="test" />
+                {
+                    category.map((tag ,index) => (
+                        <Tags key={index} tags={tag} />
+                    ))
+                }
             </div>
         </div>
     </section>
