@@ -89,7 +89,12 @@ function PublishForm() {
                     return <Tags key={index} tageIndex={index} tags={tag} />
                 })}
             </div>
+            <p className='mt-1 mb-4 text-right'>{tageLimit - category.length} tags left</p>
+            <button  className='px-8 text-sm btn-dark'>
+            publish
+        </button>
         </div>
+       
     </section>
     </>
   )
