@@ -7,6 +7,7 @@ import { Ellipsis } from 'lucide-react';
 import { useParams } from "react-router-dom";
 import { useEffect ,useState } from "react";
 import BlogSkeleton from "../components/blogSkeleton";
+import TableofCentent from "../components/tableofCentent";
 
 function Blog() {
   const [theblog, setTheBlog] = useState({});
@@ -28,12 +29,15 @@ function Blog() {
   useEffect(() => {
     getblogByid();
   }, [id]); 
+  console.log("the categories ", theblog.categories );
+  // console.log("the categories name", theblog.categories.map((category) => category.name));[{…}]
+
 
 
     
   
   return (
-    <div className="mt-10 mx-5 max-w-[1536px]   md:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
+    <div className="mt-10 mx-5 max-w-[1536px]   lg:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
       <div className="flex  justify-between items-center w-full px-5 transition duration-300 ease-out cursor-pointer">
         <div className="flex items-center justify-center ">
           <ChevronLeft />
@@ -54,68 +58,72 @@ function Blog() {
           </div>
         </div>
       </div>
-      <div className="flex gap-3 justify-center items-center  ">
-        <span className="   px-5 py-[5px] bg-slate-100  shadow-sm rounded-full  ">
-          tage 1
-        </span>
-        <span className="   px-5 py-[5px]   bg-slate-100  shadow-sm rounded-full ">
-          tage 2
-        </span>
-        <span className="  px-5 py-[5px]   bg-slate-100  shadow-sm rounded-full ">
-          tage 3
-        </span>
-      </div>
-        {/* this is the blog start */}
-        
-      {isLoading ? (
-        <>
-         <BlogSkeleton />
-         <p>loakn fw f </p>
-        </>
-       
-
-      ) : (
-        <div>
-        {/* this is the blogs title */}
-        <div className="flex justify-center py-5">
-        <h1 className=" text-3xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-[700px]  font-semibold ">
-          {theblog.title}
-        </h1>
-      </div>
-      {/* this is the blogs date realsed or write day  */}
-      <div className="flex justify-center items-center gap-3 py-3">
-        <p className="text-center text-slate-500  text-sm">March 20, 2021</p>
-        <p className="text-center text-slate-500  text-sm">8:12 AM</p>
-      </div>
-      {/* this is the blogs image */}
-      <div className="px-5 w- full flex justify-center">
-        <img
-         src={`http://localhost:8000${theblog.image_url}`}
-          className=" object-center  h-[480px] max-w-[1000px]    w-full rounded-xl  aspect-video "
-        />
-      </div>
-      {/* this is the blogs content */}
-      <div className=" flex flex-col md:grid md:grid-cols-12  justify-start w-full  gap-5 px-10 py-10">
-        <div className=" col-span-3">
-          <h1 className="text-3xl font-bold mb-4">Table of Content</h1>
-          <ul className="text-sm ">
-            <li>Introduction</li>
-            <li>Main Section</li>
-            <li>Sub Section</li>
-          </ul>
-        </div>
-        <div className="col-span-8 text-justify">
-          <p className="">
-            {theblog.content}
-          </p>
-        </div>
-      </div>
-      
-      </div>
      
-      )
-      
-      }
+        {/* this is the blog start */}
+        {isLoading ? (
+  <>
+    <BlogSkeleton />
+    <p>loakn fw f </p>
+  </>
+) : (
+  <div>
+     <div className="flex gap-3 justify-center items-center  ">
+     {theblog.categories && theblog.categories.slice(0, 3).map((category, index) => (
+      <span key={index}  className="px-5 py-[5px] bg-slate-100 shadow-sm rounded-full">
+        {category.name}
+      </span>
+    ))}
+      </div>
+    {/* this is the blogs title */}
+    <div className="flex justify-center py-5">
+      <h1 className=" text-3xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-[700px]  font-semibold ">
+        {theblog.title}
+      </h1>
+    </div>
+    {/* this is the blogs date realsed or write day  */}
+    <div className="flex justify-center items-center gap-3 py-3">
+      <p className="text-center text-slate-500  text-sm">March 20, 2021</p>
+      <p className="text-center text-slate-500  text-sm">8:12 AM</p>
+    </div>
+    {/* this is the blogs image */}
+    <div className="px-5 w- full flex justify-center">
+      <img
+        src={`http://localhost:8000${theblog.image_url}`}
+        className=" object-center  h-[480px] max-w-[1000px]    w-full rounded-xl  aspect-video "
+      />
+    </div>
+    {/* this is the blogs content */}
+    <div className=" flex flex-col md:grid md:grid-cols-12  justify-start w-full  gap-5 px-10 py-10">
+      <div className=" col-span-3">
+        <TableofCentent content={theblog.content} />
+      </div>
+      <div className="col-span-8 text-justify">
+        {
+          JSON.parse(theblog.content).map((item, index) => {
+            switch (item.type) {
+              case 'header':
+                return <h1 className="text-2xl font-semibold pt-5 pb-3 " key={index}>{item.data.text}</h1>;
+              case 'paragraph':
+                return <p className="" key={index}>{item.data.text}</p>;
+              case 'list':
+                return (
+                  <ul key={index}>
+                    {item.data.items.map((listItem, listItemIndex) => (
+                      <li key={listItemIndex}>{listItem}</li>
+                    ))}
+                  </ul>
+                );
+              case 'quote':
+                return <blockquote className=" italic font-semibold text-gray-900 " key={index}>"{item.data.text}"</blockquote>;
+              default:
+                return null;
+            }
+          })
+        }
+      </div>
+    </div>
+  </div>
+)}
        {/* this is the end of the blogs  */}
       {/* this is the blogs Comments */}
       <div className="flex flex-col justify-start items-start gap-5 px-40 w-full ">

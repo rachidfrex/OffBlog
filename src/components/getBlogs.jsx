@@ -49,7 +49,7 @@ function GetBlogs() {
                   src={`http://localhost:8000${Blogs.image_url}`}
                   alt={Blogs.title}
                 />
-              </div>
+              </div> 
 
               <div className=" bottom-5 flex justify-between  items-end   text-start bg-white py-2  ">
                 <div>

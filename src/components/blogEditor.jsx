@@ -48,12 +48,12 @@ useEffect(() => {
       let objectUrl = URL.createObjectURL(img);
       setBanner(objectUrl);
       toast.success("image uploaded successfully"); 
-      setBlog({...blog, image_url: objectUrl}); // set image_url to objectUrl directly
+      setBlog({...blog, image_url: objectUrl, image: img}); // store both image_url and image
+      console.log('image', img);
     }else{
       toast.error("image not uploaded");
     }
   };
-
 
   const handelTitleKeyDonw = (e) => {
     if(e.keyCode === 13){
@@ -70,9 +70,9 @@ useEffect(() => {
     console.log('blog', blog);
   }, [blog]);
   const handelPublishEvent = async () => {
-    if(!blog.image_url.length){
-      return toast.error("please upload a banner image");
-    }
+    // if(!blog.image_url.length){
+    //   return toast.error("please upload a banner image");
+    // }
     if(!blog.title.length){
       return toast.error("please enter a title");
     }

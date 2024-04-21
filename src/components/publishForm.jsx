@@ -13,7 +13,7 @@ function PublishForm() {
     const submitdata = async () => {
         const userInfo = JSON.parse(localStorage.getItem('user-info'));
         const user_id = userInfo ? userInfo.user_id : null;
-        if (!title || !des || !user_id || category.length === 0 || !image_url) {
+        if (!title || !des || !user_id || category.length === 0 ) {
             toast.error("All fields are required.");
             return;
             }
@@ -26,7 +26,7 @@ function PublishForm() {
         formData.append("content", JSON.stringify(content.blocks));
         formData.append("user_id", user_id);
         formData.append("categories", JSON.stringify(category));
-        formData.append("image_url", image_url);
+        formData.append("image_url", blog.image);
         let result = await fetch("http://localhost:8000/api/createBlog", {
             method: "POST",
             body: formData,
