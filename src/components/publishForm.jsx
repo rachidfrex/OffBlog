@@ -62,7 +62,7 @@ function PublishForm() {
             <h1 className='text-4xl font-medium mt-2 leading-tight line-clamp-2'>
                 {title}
             </h1>
-            <p className='line-clamp-2 text-xl'>
+            <p className='line-clamp-2 text-lg'>
                 {des}
             </p>
             
@@ -86,7 +86,7 @@ function PublishForm() {
                 onKeyDown={handelKeyDown}
                 className='sticky input-box bg-white top-0 left-0 pl-4 mb-3 focus:bg-white'/>
                 {category.map((tag, index) => { 
-                    return <Tags key={index} tags={tag} />
+                    return <Tags key={index} tageIndex={index} tags={tag} />
                 })}
             </div>
         </div>
