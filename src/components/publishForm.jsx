@@ -10,6 +10,43 @@ function PublishForm() {
         setEditorState("editor");
         toast.error("blog post canceled");
     }
+    const submitdata = async () => {
+        const userInfo = JSON.parse(localStorage.getItem('user-info'));
+        const user_id = userInfo ? userInfo.user_id : null;
+        if (!title || !des || !user_id || category.length === 0 || !image_url) {
+            toast.error("All fields are required.");
+            return;
+            }
+        if (!user_id) {
+            toast.error("User is not logged in.");
+            return;
+            }
+        let formData = new FormData();
+        formData.append("title", title);
+        formData.append("content", JSON.stringify(content.blocks));
+        formData.append("user_id", user_id);
+        formData.append("categories", JSON.stringify(category));
+        formData.append("image_url", image_url);
+        let result = await fetch("http://localhost:8000/api/createBlog", {
+            method: "POST",
+            body: formData,
+            });
+        if (!result.ok) {
+            toast.error(`Error: ${result.status}`);
+            return;
+            }
+        result = await result.json();
+        if (result.success) {
+            console.log("result", result);
+            toast.success(result.success);
+            // setEditorState("editor");
+            // setBlog({title: "", image_url: "", category: [], content: [], user_id: '', des : ""});
+            return;
+            }
+        toast.error(result.error);
+        }
+
+
     console.log( 'the resule',blog);
 
     const handelBlogTilteChange = (e) => {
@@ -43,7 +80,7 @@ function PublishForm() {
                 toast.error(`you can only add ${tageLimit} tags`);
             }
          }
-         console.log('the tags',category);
+      
     }
   return (
     <>
@@ -90,7 +127,9 @@ function PublishForm() {
                 })}
             </div>
             <p className='mt-1 mb-4 text-right'>{tageLimit - category.length} tags left</p>
-            <button  className='px-8 text-sm btn-dark'>
+            <button 
+            onClick={submitdata}
+            className='px-8 text-sm btn-dark'>
             publish
         </button>
         </div>

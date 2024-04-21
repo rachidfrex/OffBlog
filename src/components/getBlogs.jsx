@@ -55,7 +55,12 @@ function GetBlogs() {
                 <div>
                   <p className="  font-semibold ">{Blogs.title}</p>
                   <p className="  line-clamp-2 text-slate-600 text-xs ">
-                    {Blogs.content}
+
+                                  {
+                  JSON.parse(Blogs.content).map((item, index) => (
+                    <p key={index}>{item.data.text}</p>
+                  ))
+                }
                   </p>
                 </div>
               </div>
