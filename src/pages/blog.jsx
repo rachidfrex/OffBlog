@@ -102,7 +102,7 @@ function Blog() {
           JSON.parse(theblog.content).map((item, index) => {
             switch (item.type) {
               case 'header':
-                return <h1 className="text-2xl font-semibold pt-5 pb-3 " key={index}>{item.data.text}</h1>;
+                return <h1 id={item.data.text.replace(/\s+/g, '-').toLowerCase()} className="text-2xl font-semibold pt-5 pb-3 " key={index}>{item.data.text}</h1>;
               case 'paragraph':
                 return <p className="" key={index}>{item.data.text}</p>;
               case 'list':

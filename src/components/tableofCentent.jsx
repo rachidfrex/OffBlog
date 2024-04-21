@@ -10,7 +10,7 @@ function TableofContent({ content }) {
       <ul className="mt-2 list-disc px-2 pl-6">
         {headers.map((header, index) => (
           <li key={index}>
-            <a className="block hover:bg-gray-200 px-2 py-1 rounded" href={`#${header.id}`}>
+            <a className="block hover:bg-gray-200 px-2 py-1 rounded" href={`#${header.data.text.replace(/\s+/g, '-').toLowerCase()}`}>
               {header.data.text}
             </a>
           </li>
