@@ -13,7 +13,7 @@ function PublishForm() {
     const submitdata = async () => {
         const userInfo = JSON.parse(localStorage.getItem('user-info'));
         const user_id = userInfo ? userInfo.user_id : null;
-        if (!title || !des || !user_id || category.length === 0 ) {
+        if (!title || !des || !user_id || category.length === 0 || !image_url) {
             toast.error("All fields are required.");
             return;
             }
