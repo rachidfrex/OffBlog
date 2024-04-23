@@ -28,19 +28,6 @@ useEffect(() => {
  
   const [banner, setBanner] = useState(bannerimg); 
 
-
-  // const handelBnnerUpload = (e) => {
-  //   let img = e.target.files[0]; 
-  //   console.log(img);
-  //   if(img){
-  //     let objectUrl = URL.createObjectURL(img);
-  //     setBanner(objectUrl);
-  //     toast.success("image uploaded successfully"); 
-  //     setBlog({...blog, image_url: banner});
-  //   }else{
-  //     toast.error("image not uploaded");
-  //     }
-  // };
   const handelBnnerUpload = (e) => {
     let img = e.target.files[0]; 
     console.log(img);

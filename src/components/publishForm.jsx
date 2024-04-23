@@ -39,8 +39,8 @@ function PublishForm() {
         if (result.success) {
             console.log("result", result);
             toast.success(result.success);
-            // setEditorState("editor");
-            // setBlog({title: "", image_url: "", category: [], content: [], user_id: '', des : ""});
+            setEditorState("editor");
+            setBlog({title: "", image_url: "", category: [], content: [], user_id: '', des : ""});
             return;
             }
         toast.error(result.error);

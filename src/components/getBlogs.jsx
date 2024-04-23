@@ -19,7 +19,7 @@ function GetBlogs() {
       },
     });
     blogs = await blogs.json();
-    setAllBlogs(blogs);
+    setAllBlogs(blogs); 
     console.log("blogs", blogs);
     setIsLoading(true);
   };
