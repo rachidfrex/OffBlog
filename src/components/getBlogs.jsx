@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
-import Tooltip from "@mui/material/Tooltip";
+
 import Skeleton from "../components/Skeleton";
 
 function GetBlogs() {

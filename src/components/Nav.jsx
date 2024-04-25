@@ -4,9 +4,9 @@ import { Search } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import { X } from 'lucide-react';
-import banner3 from '../assets/images/banner3.jpg';
-import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
+import Profile from '../components/my-ui/profile'
+
+
 // material ui menu 
 function Nav() {
   const [search, setSearch] = useState(false);
@@ -96,7 +96,7 @@ function Nav() {
         </div>
       </div>
 
-      <div className='flex items-center md:gap-3 lg:gap-4 ml-auto    '>
+      <div className='flex items-center md:gap-3 lg:gap-4 ml-auto     '>
         <button className='md:hidden bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center'
           onClick={() => { setSearch(!search); setMenu(false) }}
         >
@@ -106,11 +106,9 @@ function Nav() {
           isUser ? (
             <>
             
-            <Link to="/dashboard/edit-profile" className='hidden md:flex  items-center text-sm text-slate-700'>
-              <Stack direction="row" spacing={1}>
-                <Avatar alt="Remy Sharp" src={banner3} />
-              </Stack>
-            </Link>
+            <div className='hidden md:flex rounded-full w-14 items-center text-sm text-slate-700'>
+            <Profile/>
+            </div>
            </>
           ) : (
             <>

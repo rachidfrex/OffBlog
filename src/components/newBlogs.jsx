@@ -11,7 +11,6 @@ import product9 from "../assets/images/products/product9.jpg";
 import product10 from "../assets/images/products/product10.jpg";
 import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
-import Tooltip from "@mui/material/Tooltip";
 import GetBlogs from "./getBlogs";
 function NewBlogs() {
  
