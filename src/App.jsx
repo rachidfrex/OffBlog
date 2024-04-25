@@ -11,6 +11,7 @@ import Changepassword from "./components/changepassword";
 import Protected from "./components/protected";
 import BlogEditor from "./components/blogEditor";
 import EditorPage from "./components/editorPage";
+import GetUserBlog from "./components/getUserBlog";
 // end of the dashboard page routs
 import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/dashboard"  element={<Protected Cmp={Dashboard} />} >
                     <Route path="/dashboard/edit-profile" element={<Editeprofile />} />
                     <Route path="/dashboard/change-password" element={<Changepassword />} />
+                    <Route path="/dashboard/user-blogs" element={<GetUserBlog />} />
                 </Route>
                 <Route path="/editor" element={<EditorPage />} />
                 <Route path="/about" element={<About />} />

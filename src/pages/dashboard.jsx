@@ -37,7 +37,7 @@ function Dashboard() {
             </h1>
             <div className='mt-7 flex flex-col  '>
                
-                <Link to='/Blogs' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in '>
+                <Link to='/dashboard/user-blogs' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in '>
                   <BookText size={15} />
                     Blogs
                 </Link>
