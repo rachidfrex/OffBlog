@@ -2,8 +2,8 @@ import React from "react";
 
 function Profile() {
   return (
-    <div className="cursor-pointer flex flex-col">
-      <ul className="flex flex-col">
+    <div className="cursor-pointer flex flex-col dropdownProfil">
+      <ul className="flex flex-col gap-6">
         <li>profile</li>
         <li>Dachboard</li>
         <li>Notifications</li>

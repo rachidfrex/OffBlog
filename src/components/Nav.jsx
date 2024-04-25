@@ -13,11 +13,8 @@ function Nav() {
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
   const [isUser, setIsUser] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
 
-  // const handleForceUpdate = () => {
-  //   // Use forceUpdate to trigger re-render
-  //   forceUpdate();
-  // };
   
   useEffect(() => {
 
@@ -107,7 +104,20 @@ function Nav() {
             <>
             
             <div className='hidden md:flex rounded-full w-14 items-center text-sm text-slate-700'>
-            <Profile/>
+            <button 
+            onClick={() => setOpenProfile(!openProfile)}
+            >
+            profile
+             </button>
+              
+             
+             {
+                openProfile ? (
+                  <Profile />
+                ) : null
+              
+             }
+             
             </div>
            </>
           ) : (
