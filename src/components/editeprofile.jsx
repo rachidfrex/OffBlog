@@ -9,17 +9,25 @@ import { AtSign } from "lucide-react";
 function Editeprofile() {
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
-  const [newUser, setNewUser] = useState({});
-  const [profileImage, setProfileImage] = useState(
-    `http://localhost:8000${user.profile_image}` || profile
-  );
+  const [editedUserInfo, setEditedUserInfo] = useState({});
+  const [profileImage, setProfileImage] = useState(null);
+
   const handleTextChange = (event) => {
     setTextCounter(200 - event.target.value.length);
+    setEditedUserInfo({
+      ...editedUserInfo,
+      [event.target.name]: event.target.value,
+    });
   };
+  console.log('edited User Info',editedUserInfo)
 
   const handleImageUpload = (event) => {
     if (event.target.files && event.target.files[0]) {
       setProfileImage(URL.createObjectURL(event.target.files[0]));
+      setEditedUserInfo({
+        ...editedUserInfo,
+        profile_image: event.target.files[0],
+      });
     }
   };
 
@@ -34,28 +42,29 @@ function Editeprofile() {
       console.log(result.user);
       console.log(user);
       setUser(result.user);
+      setEditedUserInfo(result.user);
     };
     getUser();
   }, []);
-  
 
+  const handleInputChange = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+    console.log(user);
+  };
 
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [username, setUsername] = useState("");
-const [bio, setBio] = useState("");
-// const [profile_image, setProfile_image] = useState("");
   const handelUpdateData = async (e) => {
     e.preventDefault();
     
     let formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("username", username);
-    formData.append("bio", bio);
-    formData.append("profile_image", profileImage);
-  
-    // Get user id from local storage
+    formData.append("name", user.name);
+    formData.append("email", user.email);
+    formData.append("username", user.username);
+    formData.append("bio", user.bio);
+    formData.append("profile_image", user.profile_image);
+
     const userInfo = JSON.parse(localStorage.getItem("user-info"));
     const user_id = userInfo ? userInfo.user_id : null;
   
@@ -65,10 +74,7 @@ const [bio, setBio] = useState("");
     });
     result = await result.json();
     console.log(result);
-    
-  }
-
-
+  };
 
   return (
     <>
@@ -79,7 +85,7 @@ const [bio, setBio] = useState("");
         <div className=" grid grid-cols-12   gap-5 mt-5">
           <div className=" col-span-2 flex flex-col  items-center">
             <img
-              src={profileImage}
+              src={profileImage == null  ? `http://localhost:8000${user.profile_image}` : profileImage }
               alt=""
               className="w-32 h-32 border-2 rounded-full  object-center "
             />
@@ -101,7 +107,7 @@ const [bio, setBio] = useState("");
                     name="name"
                     type="text"
                     value={user.name}
-                    onChange={(e)=>setName(e.target.value)}
+                    onChange={handleInputChange}
                     placeholder="name"
                     className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                   />
@@ -114,7 +120,7 @@ const [bio, setBio] = useState("");
                     name="email"
                     type="text"
                     value={user.email}
-                    onChange={(e)=>setEmail(e.target.value)}
+                    onChange={handleInputChange}
                     placeholder="email"
                     className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                   />
@@ -128,7 +134,7 @@ const [bio, setBio] = useState("");
                   name="username"
                   type="text"
                   value={user.username}
-                  onChange={(e)=>setUsername(e.target.value)}
+                  onChange={handleInputChange}
                   placeholder="user name"
                   className="w-full md:w-[515px] text-sm pr-[12%]  bg-slate-100 bg-grey p-3  pl-6 md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                 />
@@ -142,7 +148,8 @@ const [bio, setBio] = useState("");
                   cols="62"
                   rows="4"
                   value={user.bio}
-                  onChange={(e)=>setBio(e.target.value)}
+                  onChange={handleInputChange}
+                  onInput={handleTextChange}
                   placeholder="bio"
                   maxLength="200"
                   className="w-full resize-none md:w-[515px] text-sm   bg-slate-100 bg-grey p-3  pl-6  rounded-lg placeholder:text-slate-500  "
