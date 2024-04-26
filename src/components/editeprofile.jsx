@@ -9,6 +9,7 @@ import { AtSign } from "lucide-react";
 function Editeprofile() {
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
+  const [newUser, setNewUser] = useState({});
   const [profileImage, setProfileImage] = useState(
     `http://localhost:8000${user.profile_image}` || profile
   );
@@ -36,8 +37,38 @@ function Editeprofile() {
     };
     getUser();
   }, []);
+  
 
-  console.log("the user info ", user);
+
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [username, setUsername] = useState("");
+const [bio, setBio] = useState("");
+// const [profile_image, setProfile_image] = useState("");
+  const handelUpdateData = async (e) => {
+    e.preventDefault();
+    
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("username", username);
+    formData.append("bio", bio);
+    formData.append("profile_image", profileImage);
+  
+    // Get user id from local storage
+    const userInfo = JSON.parse(localStorage.getItem("user-info"));
+    const user_id = userInfo ? userInfo.user_id : null;
+  
+    let result = await fetch(`http://localhost:8000/api/user/${user_id}`, {
+      method: "PUT",
+      body: formData,
+    });
+    result = await result.json();
+    console.log(result);
+    
+  }
+
+
 
   return (
     <>
@@ -63,12 +94,14 @@ function Editeprofile() {
             </label>
           </div>
           <div className=" col-span-8">
-            <form action="">
+            <form onSubmit={handelUpdateData}>
               <div className="flex gap-5">
                 <div className=" className={'absolute md:border-0 border-b w-full left-0 top-full mt-0.5 md:show bg-white  border-grey py-3 px-[5vw] md:block md:relative md:inset-0 md:p-0 md:w-auto ' + (search ? 'show' : 'hide')}">
                   <input
+                    name="name"
                     type="text"
                     value={user.name}
+                    onChange={(e)=>setName(e.target.value)}
                     placeholder="name"
                     className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                   />
@@ -78,12 +111,13 @@ function Editeprofile() {
                 </div>
                 <div className=" className={'absolute md:border-0 border-b w-full left-0 top-full mt-0.5 md:show bg-white  border-grey py-3 px-[5vw] md:block md:relative md:inset-0 md:p-0 md:w-auto ' + (search ? 'show' : 'hide')}">
                   <input
+                    name="email"
                     type="text"
                     value={user.email}
+                    onChange={(e)=>setEmail(e.target.value)}
                     placeholder="email"
                     className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                   />
-
                   <span className="absolute right-[8%]  md:pointer-events-none md:left-5 top-1/2 -translate-y-1/2">
                     <Mail size={15} />
                   </span>
@@ -91,7 +125,10 @@ function Editeprofile() {
               </div>
               <div className=" mt-5 className={'absolute md:border-0 border-b w-full left-0 top-full mt-0.5 md:show bg-white  border-grey py-3 px-[5vw] md:block md:relative md:inset-0 md:p-0 md:w-auto ' + (search ? 'show' : 'hide')}">
                 <input
+                  name="username"
                   type="text"
+                  value={user.username}
+                  onChange={(e)=>setUsername(e.target.value)}
                   placeholder="user name"
                   className="w-full md:w-[515px] text-sm pr-[12%]  bg-slate-100 bg-grey p-3  pl-6 md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                 />
@@ -101,18 +138,21 @@ function Editeprofile() {
               </div>
               <div className="w-full mt-5 flex flex-col ">
                 <textarea
-                  name=""
-                  id=""
+                  name="bio"
                   cols="62"
                   rows="4"
+                  value={user.bio}
+                  onChange={(e)=>setBio(e.target.value)}
                   placeholder="bio"
                   maxLength="200"
-                  onChange={handleTextChange}
                   className="w-full resize-none md:w-[515px] text-sm   bg-slate-100 bg-grey p-3  pl-6  rounded-lg placeholder:text-slate-500  "
                 ></textarea>
                 <span className=" text-sm text-slate-500  mt-1">
                   {textCounter} characters remaining
                 </span>
+              </div>
+              <div className="mt-5">
+                <button className="btn-dark py-2 text-sm">Save</button>
               </div>
             </form>
           </div>
