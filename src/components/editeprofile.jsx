@@ -52,12 +52,15 @@ function Editeprofile() {
               alt=""
               className="w-32 h-32 border-2 rounded-full  object-center "
             />
-            <input
-              type="file"
-              onChange={handleImageUpload}
-              hidden
-              className="btn-light py-2 text-sm mt-2 flex justify-center w-full"
-            />
+            <label className="btn-light py-2 text-sm mt-2 flex justify-center w-full cursor-pointer">
+              <input
+                type="file"
+                onChange={handleImageUpload}
+                accept=".png, .jpg, .jpeg"
+                hidden
+              />
+              Change Image
+            </label>
           </div>
           <div className=" col-span-8">
             <form action="">

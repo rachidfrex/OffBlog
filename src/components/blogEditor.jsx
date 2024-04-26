@@ -57,9 +57,9 @@ useEffect(() => {
     console.log('blog', blog);
   }, [blog]);
   const handelPublishEvent = async () => {
-    // if(!blog.image_url.length){
-    //   return toast.error("please upload a banner image");
-    // }
+    if(!blog.image_url.length){
+      return toast.error("please upload a banner image");
+    }
     if(!blog.title.length){
       return toast.error("please enter a title");
     }
