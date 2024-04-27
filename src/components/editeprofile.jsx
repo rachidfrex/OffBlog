@@ -52,22 +52,23 @@ function Editeprofile() {
       ...user,
       [event.target.name]: event.target.value,
     });
+    setEditedUserInfo({
+      ...editedUserInfo,
+      [event.target.name]: event.target.value,
+    });
     console.log(user);
   };
-
   const handelUpdateData = async (e) => {
     e.preventDefault();
-    
+
     let formData = new FormData();
-    formData.append("name", user.name);
-    formData.append("email", user.email);
-    formData.append("username", user.username);
-    formData.append("bio", user.bio);
-    formData.append("profile_image", user.profile_image);
+    for (let key in editedUserInfo) {
+      formData.append(key, editedUserInfo[key]);
+    }
 
     const userInfo = JSON.parse(localStorage.getItem("user-info"));
     const user_id = userInfo ? userInfo.user_id : null;
-  
+
     let result = await fetch(`http://localhost:8000/api/user/${user_id}`, {
       method: "PUT",
       body: formData,
