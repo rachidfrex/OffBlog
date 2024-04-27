@@ -45,7 +45,7 @@ function GetBlogs() {
             <div key={Blogs.id} className="relative  rounded-lg bg-white">
               <div className=" ">
                 <img
-                  className="object-cover rounded-md h-40  aspect-video w-full bg-black/30  "
+                  className="object-cover rounded-md h-40   aspect-video w-full bg-black/30  "
                   src={`http://localhost:8000${Blogs.image_url}`}
                   alt={Blogs.title}
                 />
@@ -53,12 +53,15 @@ function GetBlogs() {
 
               <div className=" bottom-5 flex justify-between  items-end   text-start bg-white py-2  ">
                 <div>
-                  <p className="  font-semibold ">{Blogs.title}</p>
+                  <p className="  font-semibold text-[14px] ">{Blogs.title}</p>
                   <p className="  line-clamp-2 text-slate-600 text-xs ">
 
-                                  {
+                                  { 
                   JSON.parse(Blogs.content).map((item, index) => (
-                    <p key={index}>{item.data.text}</p>
+                    item.type === 'paragraph' && <p
+                    className='text-[13px] text-slate-500'
+                   key={index}>{item.data.text}</p>
+
                   ))
                 }
                   </p>

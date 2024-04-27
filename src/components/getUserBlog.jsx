@@ -44,7 +44,7 @@ function GetUserBlog() {
               <div className="w-full col-span-4 ">
                 <h1 className="font-semibold">{blog.title}</h1>
                 <p className="line-clamp-3 text-sm text-gray-500">
-                  {
+                  { 
                     JSON.parse(blog.content).map((item, index) => (
                       // i want to displat the first 3 paragraph of the blog
                       item.type === 'paragraph' && <p

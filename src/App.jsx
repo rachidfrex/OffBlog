@@ -40,7 +40,7 @@ function App() {
                 </Route>
                 <Route path="/editor" element={<EditorPage />} />
                 <Route path="/about" element={<About />} />
-            </Routes>
+            </Routes> 
             { !hideOnRoutes.includes(location.pathname) && <Footer /> }
         </div>
     );
