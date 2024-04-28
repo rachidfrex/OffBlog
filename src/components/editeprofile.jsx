@@ -5,29 +5,29 @@ import { useState } from "react";
 import profile from "../assets/images/profil.jpg";
 import { Link, Outlet } from "react-router-dom";
 import { AtSign } from "lucide-react";
+import {toast , Toaster } from "react-hot-toast";
+import axios from 'axios';
+import qs from 'qs';
 
 function Editeprofile() {
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
-  const [editedUserInfo, setEditedUserInfo] = useState({});
   const [profileImage, setProfileImage] = useState(null);
 
   const handleTextChange = (event) => {
     setTextCounter(200 - event.target.value.length);
-    setEditedUserInfo({
-      ...editedUserInfo,
-      [event.target.name]: event.target.value,
-    });
+   
   };
-  console.log('edited User Info',editedUserInfo)
+
+
 
   const handleImageUpload = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setProfileImage(URL.createObjectURL(event.target.files[0]));
-      setEditedUserInfo({
-        ...editedUserInfo,
-        profile_image: event.target.files[0],
-      });
+      const imageFile = event.target.files[0];
+      const imageUrl = URL.createObjectURL(imageFile);
+      toast.success("Image uploaded ");
+      setProfileImage(imageUrl);
+      setUser({...user, profile_image: imageFile}); // store the file object instead of the file name
     }
   };
 
@@ -42,44 +42,112 @@ function Editeprofile() {
       console.log(result.user);
       console.log(user);
       setUser(result.user);
-      setEditedUserInfo(result.user);
     };
     getUser();
   }, []);
 
-  const handleInputChange = (event) => {
-    setUser({
-      ...user,
-      [event.target.name]: event.target.value,
-    });
-    setEditedUserInfo({
-      ...editedUserInfo,
-      [event.target.name]: event.target.value,
-    });
-    console.log(user);
-  };
-  const handelUpdateData = async (e) => {
+  // async function updateUserInfo(e) {
+  //   e.preventDefault();
+  //   const userInfo = JSON.parse(localStorage.getItem("user-info"));
+  //   const user_id = userInfo ? userInfo.user_id : null;
+  
+  //   // Create a new FormData instance
+  //   const formData = new FormData();
+  
+  //   // Append the user data to the FormData instance
+  //   formData.append('name', user.name);
+  //   formData.append('email', user.email);
+  
+  //   // Append the profile image file to the FormData instance
+  //   // Note: You need to store the profile image file in the state when it's selected
+  //   if (user.profile_image) {
+  //     formData.append('profile_image', user.profile_image);
+  //     console.log("the image",user.profile_image);
+  //   }
+  //     const formBody = Array.from(formData.entries())
+  //     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+  //     .join('&');
+  
+  //   const response = await fetch(`http://localhost:8000/api/user/${user_id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //     },
+  //     body: formBody,
+  //   });
+   
+  
+  //   if (response.ok) {
+  //     const result = await response.json();
+  //     console.log("the resultes",result);
+  //     // You can update the local state with the updated user info
+  //     toast.success("Profile updated successfully");
+  //     setUser(result.user);
+  //   } else {
+  //     console.error('Error:', response.status, response.statusText);
+  //     toast.error("Profile not updated");
+  //   }
+  //   for (let pair of formData.entries()) {
+  //     console.log(pair[0]+ ', '+ pair[1]); 
+  // }
+
+  // }
+
+
+    async function updateUserInfo(e) {
     e.preventDefault();
-
-    let formData = new FormData();
-    for (let key in editedUserInfo) {
-      formData.append(key, editedUserInfo[key]);
-    }
-
     const userInfo = JSON.parse(localStorage.getItem("user-info"));
     const user_id = userInfo ? userInfo.user_id : null;
+  
+    // Create a new FormData instance
+    const formData = new FormData();
+  
+    // Append the user data to the FormData instance
+    formData.append('name', user.name);
+    formData.append('email', user.email);
+  
+    // Append the profile image file to the FormData instance
+    // Note: You need to store the profile image file in the state when it's selected
+    if (user.profile_image) {
+      // formData.append('profile_image', user.profile_image);
+    formData.append('profile_image', user.profile_image);
+      console.log("the image of the user profile",user.profile_image);
+    }
+    formData.append('_method', 'PUT');
+  
+    try {
+      const response = await axios.post(`http://localhost:8000/api/user/${user_id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      console.log("the resultes",response.data);
+      // You can update the local state with the updated user info
+      toast.success("Profile updated successfully");
+      setUser(response.data.user);
+    } catch (error) {
+      console.error('Error:', error.response.status, error.response.statusText);
+      toast.error("Profile not updated");
+    }
+  
+    for (let pair of formData.entries()) {
+      if(pair[0] === 'profile_image' && pair[1] instanceof File) {
+        console.log(pair[0]+ ', '+ pair[1].name);
+      } else {
+        console.log(pair[0]+ ', '+ pair[1]);
+      }
+    }
+  }
 
-    let result = await fetch(`http://localhost:8000/api/user/${user_id}`, {
-      method: "PUT",
-      body: formData,
-    });
-    result = await result.json();
-    console.log(result);
-  };
+
+  console.log("the new user info ",user);
+  
 
   return (
     <>
       <div>
+        <Toaster />
         <h1 className=" font-semibold  leading-tight text-start mt-2  ">
           Edite Profile
         </h1>
@@ -101,14 +169,14 @@ function Editeprofile() {
             </label>
           </div>
           <div className=" col-span-8">
-            <form onSubmit={handelUpdateData}>
+            <form >
               <div className="flex gap-5">
                 <div className=" className={'absolute md:border-0 border-b w-full left-0 top-full mt-0.5 md:show bg-white  border-grey py-3 px-[5vw] md:block md:relative md:inset-0 md:p-0 md:w-auto ' + (search ? 'show' : 'hide')}">
                   <input
                     name="name"
                     type="text"
                     value={user.name}
-                    onChange={handleInputChange}
+                    onChange={e => setUser({...user, name: e.target.value})}
                     placeholder="name"
                     className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                   />
@@ -121,7 +189,7 @@ function Editeprofile() {
                     name="email"
                     type="text"
                     value={user.email}
-                    onChange={handleInputChange}
+                    onChange={e => setUser({...user, email: e.target.value})}
                     placeholder="email"
                     className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                   />
@@ -135,7 +203,6 @@ function Editeprofile() {
                   name="username"
                   type="text"
                   value={user.username}
-                  onChange={handleInputChange}
                   placeholder="user name"
                   className="w-full md:w-[515px] text-sm pr-[12%]  bg-slate-100 bg-grey p-3  pl-6 md:pr-6 rounded-lg placeholder:text-slate-500 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
                 />
@@ -149,8 +216,7 @@ function Editeprofile() {
                   cols="62"
                   rows="4"
                   value={user.bio}
-                  onChange={handleInputChange}
-                  onInput={handleTextChange}
+                  onChange={handleTextChange}
                   placeholder="bio"
                   maxLength="200"
                   className="w-full resize-none md:w-[515px] text-sm   bg-slate-100 bg-grey p-3  pl-6  rounded-lg placeholder:text-slate-500  "
@@ -160,7 +226,7 @@ function Editeprofile() {
                 </span>
               </div>
               <div className="mt-5">
-                <button className="btn-dark py-2 text-sm">Save</button>
+                <button className="btn-dark py-2 text-sm" onClick={updateUserInfo}>Save</button>
               </div>
             </form>
           </div>

@@ -3,7 +3,7 @@ import { Toaster ,toast } from 'react-hot-toast'
 import { EdidoreContext } from "./editorPage";
 import Tags from './tags';
 function PublishForm() {
-    const characterLimit = 200;
+    const characterLimit = 200; 
     let tageLimit = 7;
     let {blog ,blog:{title ,image_url,content,category,user_id ,des} ,setEditorState ,setBlog} = useContext(EdidoreContext);
     const handekCloseEvent = () => {
@@ -27,6 +27,7 @@ function PublishForm() {
         formData.append("user_id", user_id);
         formData.append("categories", JSON.stringify(category));
         formData.append("image_url", blog.image);
+        
         let result = await fetch("http://localhost:8000/api/createBlog", {
             method: "POST",
             body: formData,
@@ -45,6 +46,7 @@ function PublishForm() {
             }
         toast.error(result.error);
         }
+        console.log( 'the image',blog.image);
 
 
     console.log( 'the resule',blog);
