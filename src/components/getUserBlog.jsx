@@ -4,6 +4,9 @@ import { toast } from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
 function GetUserBlog() {
   const [userblogs, setUserBlogs] = useState([]);
+  const [showDialog, setShowDialog] = useState(false);
+  const [blogToDelete, setBlogToDelete] = useState(null);
+
   const userInfo = JSON.parse(localStorage.getItem("user-info"));
   const user_id = userInfo ? userInfo.user_id : null;
   const handelGetuserBlogs = async () => {
@@ -31,11 +34,16 @@ function GetUserBlog() {
   //   console.log("the result", result);
   //   handelGetuserBlogs();
   // };
-  
   const handelDeleteBlog = (id) => {
-    if (window.confirm('Are you sure you want to delete this blog?')) {
+    setBlogToDelete(id);
+    setShowDialog(true);
+  };
+  const confirmDelete = (id) => {
+   
+   
       const deleteBlog = async () => {
-        let result = await fetch(`http://localhost:8000/api/blog/${id}`, {
+        setShowDialog(false);
+        let result = await fetch(`http://localhost:8000/api/blog/${blogToDelete}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -61,7 +69,7 @@ function GetUserBlog() {
           },
         }
       );
-    }
+    
   };
   useEffect(() => {
     handelGetuserBlogs();
@@ -70,6 +78,42 @@ function GetUserBlog() {
   return (
     <div>
       <Toaster />
+
+      {showDialog && (
+  
+  <div class="fixed inset-0 flex items-center justify-center z-50 backdrop-blur confirm-dialog ">
+    <div class="relative px-4 min-h-screen md:flex md:items-center md:justify-center">
+        <div class=" opacity-25 w-full h-full absolute z-10 inset-0"></div>
+        <div class="bg-white rounded-lg md:max-w-md md:mx-auto p-4 fixed inset-x-0 bottom-0 z-50 mb-4 mx-4 md:relative shadow-lg">
+            <div class="md:flex items-center">
+                <div class="rounded-full border border-gray-300 flex items-center justify-center w-16 h-16 flex-shrink-0 mx-auto">
+                {/* <i class="bx bx-error text-3xl">
+                &#9888;
+                </i> */}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                    <path d="M19.5 5.5L19.0982 12.0062M4.5 5.5L5.10461 15.5248C5.25945 18.0922 5.33688 19.3759 5.97868 20.299C6.296 20.7554 6.7048 21.1407 7.17905 21.4302C7.85035 21.84 8.68108 21.9631 10 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M20 15L13 21.9995M20 22L13 15.0005" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                </div>
+                <div class="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
+                <p class="font-bold"> Delete Blog!</p>
+                <p class="text-sm text-gray-700 mt-1">Are you sure you want to delete this blog?
+                </p>
+                </div>
+            </div>
+            <div class="text-center md:text-right mt-4 md:flex md:justify-end">
+                <button  onClick={confirmDelete} type="button" class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-red-200 text-red-700 rounded-lg font-semibold text-sm md:ml-2 md:order-2">
+                    Delete
+                </button>
+                <button onClick={() => setShowDialog(false)}  class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-gray-200 rounded-lg font-semibold text-sm mt-4 md:mt-0 md:order-1">
+                Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+)}
       <h1 className=" font-semibold  leading-tight text-start mt-2  ">
         My Blogs
       </h1>
