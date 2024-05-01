@@ -7,9 +7,12 @@ import { Link, Outlet } from "react-router-dom";
 import { AtSign } from "lucide-react";
 import {toast , Toaster } from "react-hot-toast";
 import axios from 'axios';
+import { UserContext } from "./useContext";
+import { useContext } from 'react';
 import qs from 'qs';
 
 function Editeprofile() {
+  const { setUsercontext } = useContext(UserContext);
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
   const [profileImage, setProfileImage] = useState(null);
@@ -44,56 +47,15 @@ function Editeprofile() {
       console.log(result.user);
       console.log(user);
       setUser(result.user);
+      setUsercontext(result.user);
+
+
+    
     };
     getUser();
   }, []);
 
-  // async function updateUserInfo(e) {
-  //   e.preventDefault();
-  //   const userInfo = JSON.parse(localStorage.getItem("user-info"));
-  //   const user_id = userInfo ? userInfo.user_id : null;
-  
-  //   // Create a new FormData instance
-  //   const formData = new FormData();
-  
-  //   // Append the user data to the FormData instance
-  //   formData.append('name', user.name);
-  //   formData.append('email', user.email);
-  
-  //   // Append the profile image file to the FormData instance
-  //   // Note: You need to store the profile image file in the state when it's selected
-  //   if (user.profile_image) {
-  //     formData.append('profile_image', user.profile_image);
-  //     console.log("the image",user.profile_image);
-  //   }
-  //     const formBody = Array.from(formData.entries())
-  //     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-  //     .join('&');
-  
-  //   const response = await fetch(`http://localhost:8000/api/user/${user_id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //     },
-  //     body: formBody,
-  //   });
-   
-  
-  //   if (response.ok) {
-  //     const result = await response.json();
-  //     console.log("the resultes",result);
-  //     // You can update the local state with the updated user info
-  //     toast.success("Profile updated successfully");
-  //     setUser(result.user);
-  //   } else {
-  //     console.error('Error:', response.status, response.statusText);
-  //     toast.error("Profile not updated");
-  //   }
-  //   for (let pair of formData.entries()) {
-  //     console.log(pair[0]+ ', '+ pair[1]); 
-  // }
 
-  // }
 
 
     async function updateUserInfo(e) {

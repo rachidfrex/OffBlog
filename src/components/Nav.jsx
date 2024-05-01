@@ -5,15 +5,19 @@ import { useState, useEffect, useRef } from "react";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";
 import Profile from "../components/my-ui/profile";
+import profleimage from "../assets/images/profil.jpg";
+import { useContext } from "react";
+import { UserContext } from "../components/useContext";
 
 // material ui menu
 function Nav() {
+  const { user } = useContext(UserContext);
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
   const [isUser, setIsUser] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-
+  console.log( "this is the user in the nave",user);
   useEffect(() => {
     let user = localStorage.getItem("user-info");
     if (user) {
@@ -77,7 +81,7 @@ function Nav() {
           (menu ? "show " : "hide")
         }
       >
-        <div className="border-r shadow-md md:shadow-none  md:border-0  absolute  md:relative w-[60%] min-w-[300px]    flex flex-col justify-start py-5 md:py-0  md:justify-end h-screen md:h-auto items-start   md:flex-row bg-white  p-2 mt-0.5 px-5 md:p-0 top-0 md:top-full   lg:gap-6 md:gap-3 ">
+        <div className="border-r bg-white shadow-md md:shadow-none  md:border-0  absolute  md:relative w-[60%]    flex flex-col justify-start py-5 md:py-0  md:justify-end h-screen md:h-auto items-start   md:flex-row  p-2 mt-0.5 px-5 md:p-0 top-0 md:top-full   lg:gap-6 md:gap-3 ">
           <div className="flex justify-between w-full md:hidden">
             <h1 className="flex gap-2 px-3 mb-2 ">
               <Link to="/" className="flex gap-2">
@@ -134,14 +138,15 @@ function Nav() {
           <>
             <div className="hidden md:flex rounded-full w-14 items-center text-sm text-slate-700">
               <button onClick={() => setOpenProfile(!openProfile)}>
-                profile
+                <img
+                  src={profleimage}
+                  alt=""
+                  className="w-10 h-10 rounded-full"
+                />
               </button>
               {/* <div className="profile" ref={profileRef}> */}
-              {openProfile ? (
-                  <Profile />
-              ) : !openProfile}
-                {/* </div> */}
-
+              {openProfile ? <Profile /> : !openProfile}
+              {/* </div> */}
             </div>
           </>
         ) : (

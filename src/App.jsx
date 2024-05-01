@@ -18,13 +18,19 @@ import Dashboard from "./pages/dashboard";
 import Footer from "./components/footer";
 import {Routes, Route} from "react-router-dom";
 import { useLocation } from 'react-router-dom';
+import { UserContext } from './components/useContext';
+import { useState } from 'react';
+
+
 
 
 function App() {
+    const [user, setUsercontext] = useState(null);
   const location = useLocation();
     const hideOnRoutes = ['/login', '/register'];
 
     return (
+        <UserContext.Provider value={{ user, setUsercontext }}>
         <div className="font-BeVietnam text-slate-700 w-full ">
             { !hideOnRoutes.includes(location.pathname) && <Nav /> }
             <Routes>
@@ -43,6 +49,7 @@ function App() {
             </Routes> 
             { !hideOnRoutes.includes(location.pathname) && <Footer /> }
         </div>
+        </UserContext.Provider>
     );
 }
 
