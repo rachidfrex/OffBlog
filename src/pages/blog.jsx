@@ -37,7 +37,8 @@ function Blog() {
     
   
   return (
-    <div className="mt-10 mx-5 max-w-[1536px]   lg:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg ">
+    //mt-10 mx-5 max-w-[1536px]   lg:mx-20  pt-5 flex flex-col gap-5 justify-center items-center bg-white  rounded-lg 
+    <div className="mt-10 flex flex-col gap-5 justify-center items-center  ">
       <div className="flex  justify-between items-center w-full px-5 transition duration-300 ease-out cursor-pointer">
         <div className="flex items-center justify-center ">
           <ChevronLeft />
@@ -61,12 +62,12 @@ function Blog() {
      
         {/* this is the blog start */}
         {isLoading ? (
-  <>
-    <BlogSkeleton />
-    <p>loakn fw f </p>
-  </>
+        <>
+          <BlogSkeleton />
+          <p>loakn fw f </p>
+        </>
 ) : (
-  <div>
+  <div className=" w-full">
      <div className="flex gap-3 justify-center items-center  ">
      {theblog.categories && theblog.categories.slice(0, 3).map((category, index) => (
       <span key={index}  className="px-5 py-[5px] bg-slate-100 shadow-sm rounded-full">
@@ -80,11 +81,15 @@ function Blog() {
         {theblog.title}
       </h1>
     </div>
-    {/* this is the blogs date realsed or write day  */}
-    <div className="flex justify-center items-center gap-3 py-3">
-      <p className="text-center text-slate-500  text-sm">March 20, 2021</p>
-      <p className="text-center text-slate-500  text-sm">8:12 AM</p>
-    </div>
+   {/* this is the blogs date realsed or write day  */}
+      <div className="flex justify-center items-center gap-3 py-3">
+        <p className="text-center text-slate-500  text-sm">
+          {new Date(theblog.created_at).toLocaleDateString()}
+        </p>
+        <p className="text-center text-slate-500  text-sm">
+          {new Date(theblog.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </p>
+      </div>
     {/* this is the blogs image */}
     <div className="px-5 w- full flex justify-center">
       <img
