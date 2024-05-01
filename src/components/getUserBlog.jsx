@@ -117,9 +117,15 @@ function GetUserBlog() {
       <h1 className=" font-semibold  leading-tight text-start mt-2  ">
         My Blogs
       </h1>
+      {/* this is the user blogs */}
+      
       <div>
         {userblogs.map((blog) => (
           <>
+              {
+            userblogs.length === 0 && 
+            <p className="text-center text-gray-500">No blogs found</p>
+            }
             <div
               key={blog.id}
               className="border  border-gray-200 p-2 mt-2 rounded-lg flex gap-5 justify-center items-center w-full  relative  "
