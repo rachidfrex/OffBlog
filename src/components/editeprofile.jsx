@@ -7,12 +7,12 @@ import { Link, Outlet } from "react-router-dom";
 import { AtSign } from "lucide-react";
 import {toast , Toaster } from "react-hot-toast";
 import axios from 'axios';
-import { UserContext } from "./useContext";
-import { useContext } from 'react';
+// import { UserContext } from "./useContext";
+// import { useContext } from 'react';
 import qs from 'qs';
 
 function Editeprofile() {
-  const { setUsercontext } = useContext(UserContext);
+  // const { setUsercontext } = useContext(UserContext);
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
   const [profileImage, setProfileImage] = useState(null);

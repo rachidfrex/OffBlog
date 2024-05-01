@@ -8,6 +8,7 @@ import Profile from "../components/my-ui/profile";
 import profleimage from "../assets/images/profil.jpg";
 import { useContext } from "react";
 import { UserContext } from "../components/useContext";
+import Gettheuserglobale from "../components/gettheuserglobale";
 
 // material ui menu
 function Nav() {
@@ -49,6 +50,7 @@ function Nav() {
 
   return (
     <div className="navbar">
+      <Gettheuserglobale />
       <div className="flex items-center justify-center md:gap-4 lg:gap-8">
         <h1 className="flex gap-2">
           <Link to="/" className="flex gap-2">
@@ -139,7 +141,7 @@ function Nav() {
             <div className="hidden md:flex rounded-full w-14 items-center text-sm text-slate-700">
               <button onClick={() => setOpenProfile(!openProfile)}>
                 <img
-                  src={profleimage}
+                  src={user? `http://localhost:8000${user.profile_image}`: profleimage}
                   alt=""
                   className="w-10 h-10 rounded-full"
                 />
