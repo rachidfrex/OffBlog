@@ -13,7 +13,7 @@ import { useContext } from 'react';
 import qs from 'qs';
 
 function Editeprofile() {
-  const { userCon} = useContext(UserContext);
+  const { userCon , setUsercontext} = useContext(UserContext);
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
   const [profileImage, setProfileImage] = useState(null);
@@ -48,6 +48,7 @@ function Editeprofile() {
       console.log(result.user);
       console.log(user);
       setUser(result.user);
+      setUsercontext(result.user);
 
 
     
