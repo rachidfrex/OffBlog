@@ -106,15 +106,16 @@ function Blog() {
         {
           JSON.parse(theblog.content).map((item, index) => {
             switch (item.type) {
-              case 'header':
-                return <h1 id={item.data.text.replace(/\s+/g, '-').toLowerCase()} className="text-2xl font-semibold pt-5 pb-3 " key={index}>{item.data.text}</h1>;
+              case 'header' :
+                const headerClass = item.data.level === 2 ? "text-2xl" : "text-lg";
+                return <h1 id={item.data.text.replace(/\s+/g, '-').toLowerCase()} className={`${headerClass} font-semibold pt-5 pb-3 `} key={index}>{item.data.text}</h1>;
               case 'paragraph':
                 return <p className="" key={index}>{item.data.text}</p>;
               case 'list':
                 return (
-                  <ul key={index}>
+                  <ul className="flex flex-col gap-2 list-disc ml-10 " key={index}>
                     {item.data.items.map((listItem, listItemIndex) => (
-                      <li key={listItemIndex}>{listItem}</li>
+                      <li className="text-sm " key={listItemIndex}>  {listItem}</li> 
                     ))}
                   </ul>
                 );

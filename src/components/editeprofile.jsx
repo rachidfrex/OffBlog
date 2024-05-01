@@ -25,12 +25,14 @@ function Editeprofile() {
     if (event.target.files && event.target.files[0]) {
       const imageFile = event.target.files[0];
       const imageUrl = URL.createObjectURL(imageFile);
-      toast.success("Image uploaded ");
+      toast.success("Image uploaded successfully");
       setProfileImage(imageUrl);
       setUser({...user, profile_image: imageFile}); // store the file object instead of the file name
     }
   };
 
+
+  
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user-info"));
     const user_id = userInfo ? userInfo.user_id : null;
@@ -131,13 +133,14 @@ function Editeprofile() {
       toast.error("Profile not updated");
     }
   
-    for (let pair of formData.entries()) {
-      if(pair[0] === 'profile_image' && pair[1] instanceof File) {
-        console.log(pair[0]+ ', '+ pair[1].name);
-      } else {
-        console.log(pair[0]+ ', '+ pair[1]);
-      }
-    }
+    // for (let pair of formData.entries()) {
+    //   if(pair[0] === 'profile_image' && pair[1] instanceof File) {
+    //     console.log(pair[0]+ ', '+ pair[1].name);
+    //   } else {
+    //     console.log(pair[0]+ ', '+ pair[1]);
+    //   }
+    // }
+    
   }
 
 

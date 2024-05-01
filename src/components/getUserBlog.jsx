@@ -118,14 +118,17 @@ function GetUserBlog() {
         My Blogs
       </h1>
       {/* this is the user blogs */}
-      
+      {
+            userblogs.length === 0 && 
+            <p className="text-center text-sm text-gray-500 mt-10">
+              You have not created any blog yet ...
+            </p>
+            
+            }
       <div>
         {userblogs.map((blog) => (
           <>
-              {
-            userblogs.length === 0 && 
-            <p className="text-center text-gray-500">No blogs found</p>
-            }
+             
             <div
               key={blog.id}
               className="border  border-gray-200 p-2 mt-2 rounded-lg flex gap-5 justify-center items-center w-full  relative  "
