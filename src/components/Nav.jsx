@@ -13,7 +13,7 @@ import { useContext } from 'react';
 
 // material ui menu
 function Nav() {
-  const { userCon } = useContext(UserContext);
+  const { userCon ,setUsercontext } = useContext(UserContext);
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
@@ -29,7 +29,6 @@ function Nav() {
   }, []);
 
   // get the user context
-const { setUsercontext  } = useContext(UserContext);
 useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user-info"));
     const user_id = userInfo ? userInfo.user_id : null;

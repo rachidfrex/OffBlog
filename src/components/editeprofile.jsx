@@ -13,7 +13,7 @@ import { useContext } from 'react';
 import qs from 'qs';
 
 function Editeprofile() {
-  const { userCon , setUsercontext} = useContext(UserContext);
+  const { setUsercontext} = useContext(UserContext);
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
   const [profileImage, setProfileImage] = useState(null);
@@ -30,7 +30,7 @@ function Editeprofile() {
       const imageFile = event.target.files[0];
       const imageUrl = URL.createObjectURL(imageFile);
       toast.success("Image uploaded successfully");
-      setProfileImage(imageUrl);
+      setProfileImage(imageUrl);   
       setUser({...user, profile_image: imageFile}); // store the file object instead of the file name
     }
   };
@@ -47,14 +47,11 @@ function Editeprofile() {
       result = await result.json();
       console.log(result.user);
       console.log(user);
-      setUser(result.user);
-      setUsercontext(result.user);
-
-
-    
+      setUser(result.user);   
     };
     getUser();
   }, []);
+  
 
 
 
@@ -91,6 +88,7 @@ function Editeprofile() {
       // You can update the local state with the updated user info
       toast.success("Profile updated successfully");
       setUser(response.data.user);
+      setUsercontext({...user, profile_image: response.data.user.profile_image});
     } catch (error) {
       console.error('Error:', error.response.status, error.response.statusText);
       toast.error("Profile not updated");
@@ -105,6 +103,7 @@ function Editeprofile() {
     }
     
   }
+  
 
 
   console.log("the new user info ",user);
