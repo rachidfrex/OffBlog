@@ -6,6 +6,7 @@ import Discount from "../components/discount";
 function Home() {
   return (
     <div>
+      
     <Carousel />
       <Categories />
       <NewBlogs />

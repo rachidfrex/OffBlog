@@ -6,19 +6,20 @@ import { Menu } from "lucide-react";
 import { X } from "lucide-react";
 import Profile from "../components/my-ui/profile";
 import profleimage from "../assets/images/profil.jpg";
-import { useContext } from "react";
-import { UserContext } from "../components/useContext";
-import Gettheuserglobale from "../components/gettheuserglobale";
+
+// context 
+import { UserContext } from "./useContext";
+import { useContext } from 'react';
 
 // material ui menu
 function Nav() {
-  const { user } = useContext(UserContext);
+  const { userCon } = useContext(UserContext);
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
   const menuRef = useRef();
   const [isUser, setIsUser] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-  console.log( "this is the user in the nave",user);
+  console.log( "this is the user in the nave");
   useEffect(() => {
     let user = localStorage.getItem("user-info");
     if (user) {
@@ -27,17 +28,26 @@ function Nav() {
     }
   }, []);
 
-  // let profileRef = useRef();
-  // useEffect(() => {
-  //   let handler = (e) => {
-  //     if (profileRef.current.contains(e.target)) {
-  //       setOpenProfile(false);
-  //       console.log(profileRef.current);
-  //     }
-  //     setOpenProfile(false);
-  //   };
-  //   document.addEventListener("mousedown", handler);
-  // });
+  // get the user context
+const { setUsercontext  } = useContext(UserContext);
+useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user-info"));
+    const user_id = userInfo ? userInfo.user_id : null;
+    const getUser = async () => {
+      let result = await fetch(`http://localhost:8000/api/user/${user_id}`, {
+        method: "GET",
+      });
+      result = await result.json();
+      console.log(result.user);
+      setUsercontext(result.user);
+
+
+    
+    };
+    getUser();
+  }, []);
+ // end of the get user function
+ 
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -50,7 +60,6 @@ function Nav() {
 
   return (
     <div className="navbar">
-      <Gettheuserglobale />
       <div className="flex items-center justify-center md:gap-4 lg:gap-8">
         <h1 className="flex gap-2">
           <Link to="/" className="flex gap-2">
@@ -141,7 +150,7 @@ function Nav() {
             <div className="hidden md:flex rounded-full w-14 items-center text-sm text-slate-700">
               <button onClick={() => setOpenProfile(!openProfile)}>
                 <img
-                  src={user? `http://localhost:8000${user.profile_image}`: profleimage}
+                  src={userCon? `http://localhost:8000${userCon.profile_image}`: profleimage}
                   alt=""
                   className="w-10 h-10 rounded-full"
                 />

@@ -7,12 +7,13 @@ import { Link, Outlet } from "react-router-dom";
 import { AtSign } from "lucide-react";
 import {toast , Toaster } from "react-hot-toast";
 import axios from 'axios';
-// import { UserContext } from "./useContext";
-// import { useContext } from 'react';
+import { UserContext } from "../components/useContext";
+import { useContext } from 'react';
+
 import qs from 'qs';
 
 function Editeprofile() {
-  // const { setUsercontext } = useContext(UserContext);
+  const { userCon} = useContext(UserContext);
   const [textCounter, setTextCounter] = useState(200);
   const [user, setUser] = useState({});
   const [profileImage, setProfileImage] = useState(null);
@@ -47,7 +48,6 @@ function Editeprofile() {
       console.log(result.user);
       console.log(user);
       setUser(result.user);
-      setUsercontext(result.user);
 
 
     
@@ -95,13 +95,13 @@ function Editeprofile() {
       toast.error("Profile not updated");
     }
   
-    // for (let pair of formData.entries()) {
-    //   if(pair[0] === 'profile_image' && pair[1] instanceof File) {
-    //     console.log(pair[0]+ ', '+ pair[1].name);
-    //   } else {
-    //     console.log(pair[0]+ ', '+ pair[1]);
-    //   }
-    // }
+    for (let pair of formData.entries()) {
+      if(pair[0] === 'profile_image' && pair[1] instanceof File) {
+        console.log(pair[0]+ ', '+ pair[1].name);
+      } else {
+        console.log(pair[0]+ ', '+ pair[1]);
+      }
+    }
     
   }
 

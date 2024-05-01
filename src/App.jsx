@@ -25,12 +25,12 @@ import { useState } from 'react';
 
 
 function App() {
-    const [user, setUsercontext] = useState(null);
+    const [userCon, setUsercontext] = useState(null);
   const location = useLocation();
     const hideOnRoutes = ['/login', '/register'];
 
     return (
-        <UserContext.Provider value={{ user, setUsercontext }}>
+        <UserContext.Provider value={{ userCon, setUsercontext }}>
         <div className="font-BeVietnam text-slate-700 w-full ">
             { !hideOnRoutes.includes(location.pathname) && <Nav /> }
             <Routes>
