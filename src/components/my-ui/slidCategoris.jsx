@@ -97,7 +97,7 @@ function SlidCategoris() {
               collections.map((collection) => (
                 <div className="relative px-2 ">
                 <img
-                  className="object-cover  rounded-2xl  aspect-[9/11] h-fit md:w-[260px] lg:w-[280px]  xl:w-[300px] 2xl:w-[320px]"
+                  className="object-cover  rounded-2xl  aspect-[9/11] h-fit md:w-[260px] lg:w-[280px]  xl:w-[300px] 2xl:w-[340px]"
                   src={collection.image}
                   alt="collection1"
                 />
