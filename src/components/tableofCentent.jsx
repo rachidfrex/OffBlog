@@ -15,7 +15,7 @@ function TableofContent({ content }) {
               <a className={`block hover:bg-gray-200 px-2 py-1 rounded ${headerClass}`} href={`#${header.data.text.replace(/\s+/g, '-').toLowerCase()}`}>
                 {header.data.text}
               </a>
-            </li>
+            </li> 
           )
         })}
       </ul>

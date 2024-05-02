@@ -21,13 +21,16 @@
     "@flaticon/flaticon-uicons": "^3.2.1",
     "@material-tailwind/react": "^2.1.9",
     "axios": "^1.6.8",
+    "embla-carousel-react": "^8.0.2",
     "gsap": "^3.12.5",
     "lucide-react": "^0.365.0",
     "qs": "^6.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

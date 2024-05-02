@@ -72,7 +72,7 @@ function Blog() {
   <div className=" w-full ">
      <div className="flex gap-3 justify-center items-center  ">
      {theblog.categories && theblog.categories.slice(0, 3).map((category, index) => (
-      <span key={index}  className="px-5 py-[5px] bg-slate-100 shadow-sm rounded-full">
+      <span key={index}  className="px-5 py-[3px] bg-slate-100 rounded-full">
         {category.name}
       </span>
     ))}
@@ -101,10 +101,10 @@ function Blog() {
     </div>
     {/* this is the blogs content */}
     <div className=" flex flex-col lg:grid lg:grid-cols-12  justify-start w-full  gap-5 px-5 md:px-10 py-10">
-      <div className=" col-span-3  lg:col-span-4">
+      <div className=" col-span-4  lg:col-span-3">
         <TableofCentent content={theblog.content} />
       </div>
-      <div className=" col-span-9 lg:col-span-8 text-justify">
+      <div className=" col-span-8 lg:col-span-8 text-justify">
         {
           JSON.parse(theblog.content).map((item, index) => {
             switch (item.type) {

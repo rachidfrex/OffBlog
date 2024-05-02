@@ -34,7 +34,7 @@ function Categories() {
           <ChevronRight />
         </button>
         <button className="bg-black  text-white text-md px-7 py-2 rounded-full  border-2 border-black hover:bg-white hover:text-black transform duration-200 ease-in-out">
-          view all
+          view all 
         </button>
       </div>
       <div className="flex gap-5 justify-center items-center">
