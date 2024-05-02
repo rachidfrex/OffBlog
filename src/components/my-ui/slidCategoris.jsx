@@ -14,12 +14,11 @@ function SlidCategoris() {
   var settings = {
 
     dots: false,
-    infinite: true,
-    loop: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
+    infinite: true,
     
     responsive: [
       {
@@ -72,22 +71,23 @@ function SlidCategoris() {
    ]
   return (
     <div className=" mt-10 mx-5 md:mx-10 lg:mx-20 max-w-[1600px] relative overflow-hidden ">
-      <div className="flex gap-5  justify-end  items-center w-full px-20 mt-10 ">
-        <button className="text-black bg-white rounded-full p-2  hover:-translate-x-1 transition duration-300 ease-in-out ">
+        <div className="flex w-full  justify-center items-center mt-10">
+        <h1 className=" text-2xl lg:text-4xl font-semibold text-black leading-tight text-center ">
+        Browse  New & Trending <br />  Categories
+        </h1>
+      </div>
+      <div className="flex gap-5  justify-center md:justify-end  items-center w-full px-5 md:px-20 mt-5  ">
+        <button className="text-black  bg-white rounded-full p-2  hover:-translate-x-1 transition duration-300 ease-in-out ">
           <ChevronLeft />
         </button>
         <button className="text-black bg-white rounded-full p-2 hover:translate-x-1 transition duration-300 ease-in-out">
           <ChevronRight />
         </button>
-        <button className="bg-black  text-white text-md px-7 py-2 rounded-full  border-2 border-black hover:bg-white hover:text-black transform duration-200 ease-in-out">
+        <button className="bg-black text-sm  text-white text-md px-7 py-2 rounded-full  border-2 border-black hover:bg-white hover:text-black transform duration-200 ease-in-out">
           view all
         </button>
       </div>
-      <div className="flex gap-5 justify-center items-center">
-        <h1 className="text-4xl font-semibold text-black leading-tight text-center ">
-        Browse  New & Trending <br />  Categories
-        </h1>
-      </div>
+      
       
         {/* this is the cards  */}
         <div className="  flex justify-start items-center gap-4  overflow-hidden ">
