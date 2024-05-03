@@ -71,11 +71,24 @@ function Blog() {
 ) : (
   <div className=" w-full ">
      <div className="flex gap-3 justify-center items-center  ">
-     {theblog.categories && theblog.categories.slice(0, 3).map((category, index) => (
-      <span key={index}  className="px-5 py-[3px] bg-slate-100 rounded-full">
-        {category.name}
-      </span>
-    ))}
+     {theblog.categories.slice(0, 3).map((category, index) => (
+                  <div className="flex items-center justify-start gap-2 mt-2" key={index}>
+                    <div className={`py-0.5 px-3 rounded-full ${index === 0 ? 'bg-violet-200' : index === 1 ? 'bg-yellow-200' : 'bg-green-200'}`}>
+                      <p className={`text-sm font-semibold ${index === 0 ? 'text-violet-600' : index === 1 ? 'text-yellow-600' : 'text-green-600'}`}>
+                        {category.name}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {theblog.categories.length > 2 && (
+                  <div className="flex items-center justify-start gap-2 mt-2">
+                    <div className="py-0.5 px-3 rounded-full bg-orange-200">
+                      <p className=" text-sm font-semibold text-orange-600">
+                        +{theblog.categories.length - 3}
+                      </p>
+                    </div>
+                  </div>
+                )}
       </div>
     {/* this is the blogs title */}
     <div className="flex justify-center py-5">

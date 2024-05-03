@@ -59,6 +59,7 @@ function SlidCategoris() {
         const data = await response.json();
         console.log("data", data);
         setCategories(data);
+        setGetCategories(data);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }

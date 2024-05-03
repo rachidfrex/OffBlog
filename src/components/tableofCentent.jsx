@@ -9,7 +9,7 @@ function TableofContent({ content }) {
       <div className="mx-auto text-xl font-semibold"><strong>Table of content</strong></div>
       <ul className="mt-2 list-disc px-2 pl-6">
         {headers.map((header, index) => {
-          const headerClass = header.data.level === 2 ? "" : "text-sm";
+          const headerClass = header.data.level === 2 ? " font-semibold" : "text-sm";
           return (
             <li key={index}>
               <a className={`block hover:bg-gray-200 px-2 py-1 rounded ${headerClass}`} href={`#${header.data.text.replace(/\s+/g, '-').toLowerCase()}`}>

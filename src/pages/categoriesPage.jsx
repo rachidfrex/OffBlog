@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 function CategoriesPage() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  //  get categories from the server function
 
   const getCategories = async () => {
     try {

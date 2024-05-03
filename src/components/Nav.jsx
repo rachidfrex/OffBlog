@@ -123,10 +123,10 @@ useEffect(() => {
             </Link>
           ) : (
             <>
-              <Link to="/login" className=" md:text-base navlinks">
+              <Link to="/login" className="  md:text-base navlinks  p-2 btn-dark">
                 Login
               </Link>
-              <Link to="/register" className=" md:text-base navlinks">
+              <Link to="/register" className="  md:text-base btn-dark  p-2 navlinks">
                 Register
               </Link>
             </>
