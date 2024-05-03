@@ -6,6 +6,7 @@ import collection2 from "../assets/images/collection2.jpg";
 import collection3 from "../assets/images/collection3.jpg";
 import collection4 from "../assets/images/collection4.jpg";
 import { Plus } from "lucide-react";
+
 function Categories() {
   const collections = [
     {

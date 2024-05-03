@@ -9,7 +9,6 @@ function Home() {
     <div>
     <Carousel />
       <SlidCategoris />
-      <Categories />
       <NewBlogs />
       <Discount /> 
     </div>

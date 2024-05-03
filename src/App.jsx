@@ -5,6 +5,7 @@ import Blog from "./pages/blog";
 import Blogs from "./pages/blogs";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import CategoriesPage from "./pages/categoriesPage";
 // this is the dashboard page routs 
 import Editeprofile from "./components/editeprofile";
 import Changepassword from "./components/changepassword";
@@ -26,11 +27,11 @@ import { useState } from 'react';
 
 function App() {
     const [userCon, setUsercontext] = useState(null);
-  const location = useLocation();
+    const location = useLocation();
     const hideOnRoutes = ['/login', '/register'];
 
     return (
-        <UserContext.Provider value={{ userCon, setUsercontext }}>
+        <UserContext.Provider value={{ userCon, setUsercontext , categories, setCategories }}>
         <div className="font-BeVietnam text-slate-700 w-full ">
             { !hideOnRoutes.includes(location.pathname) && <Nav /> }
             <Routes>
@@ -46,6 +47,7 @@ function App() {
                 </Route>
                 <Route path="/editor" element={<EditorPage />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/categories" element={<CategoriesPage />} />
             </Routes> 
             { !hideOnRoutes.includes(location.pathname) && <Footer /> }
         </div>

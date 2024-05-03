@@ -4,13 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft } from "lucide-react";
 import { ChevronRight } from "lucide-react";
-import collection1 from "../../assets/images/collection1.jpg";
-import collection2 from "../../assets/images/collection2.jpg";
-import collection3 from "../../assets/images/collection3.jpg";
-import collection4 from "../../assets/images/collection4.jpg";
-import { Plus } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../components/useContext";
+import { useContext } from 'react';
 
 function SlidCategoris() {
+  const { setGetCategories } = useContext(UserContext);
   var settings = {
 
     dots: false,
@@ -20,6 +20,7 @@ function SlidCategoris() {
     initialSlide: 0,
     swipeToSlide: true,
     infinite: true,
+ 
     
     responsive: [
       {
@@ -48,28 +49,26 @@ function SlidCategoris() {
     ],
     
   };
-  const collections = [
-    {
-        id: 0,
-        image: collection1,
-        type: "winter",
-    },
-    {
-      id: 1,
-      image: collection2,
-      type: "elegeant",
-    },
-    {
-      id: 2,
-      image: collection3,
-      type: "sports",
-    },
-    {
-      id: 3,
-      image: collection4,
-      type: "wommen's",
-    },
-   ]
+    const [categories, setCategories] = useState([]);
+  //  get categories from the server function
+    const getCategories = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/categories", {
+          method: "GET",
+        });
+        const data = await response.json();
+        console.log("data", data);
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    useEffect(() => {
+      getCategories();
+    }, []);
+    console.log("hadi hiya categories", categories);
+
+
   return (
     <div className=" mt-10 mx-5 md:mx-10 lg:mx-20 max-w-[1600px] relative overflow-hidden ">
         <div className="flex w-full  justify-center items-center mt-10">
@@ -78,15 +77,15 @@ function SlidCategoris() {
         </h1>
       </div>
       <div className="flex gap-5  justify-center md:justify-end  items-center w-full px-5 md:px-20 mt-5  ">
-        <button className="text-black  bg-white rounded-full p-2  hover:-translate-x-1 transition duration-300 ease-in-out ">
-          <ChevronLeft />
+        <button className="text-black slick-arrow  bg-white rounded-full p-2  hover:-translate-x-1 transition duration-300 ease-in-out ">
+          <ChevronLeft  />
         </button>
-        <button className="text-black bg-white rounded-full p-2 hover:translate-x-1 transition duration-300 ease-in-out">
+        <button className="text-black bg-white slick-arrow rounded-full p-2 hover:translate-x-1 transition duration-300 ease-in-out">
           <ChevronRight />
         </button>
-        <button className="bg-black text-sm  text-white text-md px-7 py-2 rounded-full  border-2 border-black hover:bg-white hover:text-black transform duration-200 ease-in-out">
+        <Link to="/categories" className="bg-black text-sm  text-white text-md px-7 py-2 rounded-full  border-2 border-black hover:bg-white hover:text-black transform duration-200 ease-in-out">
           view all
-        </button>
+        </Link>
       </div>
       
       
@@ -94,16 +93,17 @@ function SlidCategoris() {
         <div className="  flex justify-start items-center gap-4  overflow-hidden ">
           <div className="w-full h-fit  mt-5 flex flex-col  ">
           <Slider {...settings}>
+            
             {
-              collections.map((collection) => (
+              categories.map((collection) => (
                 <div className="relative px-2 ">
                 <img
                   className="object-cover  rounded-2xl  aspect-[9/11] h-fit md:w-[260px] lg:w-[280px]  xl:w-[300px] 2xl:w-[340px]"
-                  src={collection.image}
+                  src={`http://localhost:8000${collection.image_url}`}
                   alt="collection1"
                 />
                 <div className="absolute bottom-5 translate-x-5 transform  text-start bg-white p-2 px-7 rounded-full shadow-lg  hover:bg-black hover:text-white transition duration-300 ease-in-out">
-                <p className=" text-sm font-semibold">{collection.type}</p>
+                <p className=" text-sm font-semibold">{collection.name}</p>
               </div>
               
   
@@ -111,8 +111,9 @@ function SlidCategoris() {
               ))
 
             }
+             
             </Slider>
-          
+  
           </div>
          
         </div>

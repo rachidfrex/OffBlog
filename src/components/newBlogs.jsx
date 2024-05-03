@@ -18,7 +18,7 @@ function NewBlogs() {
   return (
     <div className="mt-20 md:px-20 px-10 flex flex-col w-full items-center ">
       <div className="flex gap-5 justify-center items-center mb-10 ">
-        <h1 className="text-5xl font-semibold text-black leading-tight text-center ">
+        <h1 className="text-2xl lg:text-4xl font-semibold text-black leading-tight text-center ">
           Discover our new <br /> Blogs
         </h1>
       </div>
