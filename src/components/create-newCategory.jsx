@@ -3,7 +3,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 
-function CreatenewCategory() {
+function CreatenewCategory({setShowCreateCategory}) {
+  const handleCancelClick = () => {
+    setShowCreateCategory(false);
+  };
+
+
     const [name, setName] = useState("");
   const handelCreateCategory = async () => {
     if (!name) {
@@ -30,6 +35,7 @@ function CreatenewCategory() {
       toast.error(data.error);
     }
   };
+
   return <div class="fixed inset-0 flex items-center justify-center z-50 backdrop-blur confirm-dialog ">
   <div class="relative px-4 min-h-screen md:flex md:items-center md:justify-center">
       <div class=" opacity-25 w-full h-full absolute z-10 inset-0"></div>
@@ -45,7 +51,7 @@ function CreatenewCategory() {
               <button onClick={handelCreateCategory}  type="button" class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-red-200 text-red-700 rounded-lg font-semibold text-sm md:ml-2 md:order-2">
                   create 
               </button>
-              <button class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-gray-200 rounded-lg font-semibold text-sm mt-4 md:mt-0 md:order-1">
+              <button onClick={handleCancelClick} class="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-gray-200 rounded-lg font-semibold text-sm mt-4 md:mt-0 md:order-1">
               Cancel
               </button>
           </div>

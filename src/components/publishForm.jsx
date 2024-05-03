@@ -121,9 +121,9 @@ function PublishForm() {
           <h1 className="text-4xl font-medium mt-2 leading-tight line-clamp-2">
             {title}
           </h1>
-          <p className="line-clamp-2 text-lg">{des}</p>
+          <p className="line-clamp-2 ">{des}</p>
         </div>
-        <div className="border-grey lg:border lg:pl-8">
+        <div className="border-grey lg:border-2 lg:px-8 lg:pb-8 rounded-lg ">
           <p className="mb-2 mt-9">Blog Title</p>
           <input
             type="text"
@@ -152,7 +152,7 @@ function PublishForm() {
             <p className=""> category </p>
             <button className="btn-dark px-2 text-xs  py-2 mx-3" onClick={handleCreateCategoryClick}>create new category </button>
 
-            {showCreateCategory && <CreatenewCategory />}
+            {showCreateCategory && <CreatenewCategory  setShowCreateCategory={setShowCreateCategory} />}
           </div>
           <div className="relative input-box bg-slate-200 pl-2 py-2 pb-4 ">
             <input
