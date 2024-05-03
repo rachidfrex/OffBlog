@@ -93,7 +93,7 @@ useEffect(() => {
         </Link>
         <p className="max-md:hiddnen text-black line-clamp-1 w-full">
           {title.length ? title : "new blog"}
-        </p>
+        </p> 
         <div className="flex gap-4 ml-auto">
           <button className="btn-dark py-2 text-sm"
           onClick={handelPublishEvent}
