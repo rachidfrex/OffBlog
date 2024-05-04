@@ -28,11 +28,12 @@ import { useState } from 'react';
 function App() {
     const [userCon, setUsercontext] = useState(null);
     const [getCategories, setGetCategories] = useState([]);
+    const [getBlogs, setGetBlogs] = useState([]);
     const location = useLocation();
     const hideOnRoutes = ['/login', '/register'];
 
     return (
-        <UserContext.Provider value={{ userCon, setUsercontext , getCategories, setGetCategories }}>
+        <UserContext.Provider value={{ userCon, setUsercontext , getCategories, setGetCategories ,getBlogs ,setGetBlogs }}>
         <div className="font-BeVietnam text-slate-700 w-full ">
             { !hideOnRoutes.includes(location.pathname) && <Nav /> }
             <Routes>

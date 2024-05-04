@@ -32,7 +32,24 @@ function Blog() {
   console.log("the categories ", theblog.categories );
   // console.log("the categories name", theblog.categories.map((category) => category.name));[{…}]
 
-
+  async function toggleLike() {
+    const response = await fetch(`http://localhost:8000/api/blogs/${theblog.id}/like`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        // Include your authentication headers here
+      },
+    });
+  
+    if (!response.ok) {
+      console.error('Failed to toggle like');
+      return;
+    }
+  
+    const updatedBlog = await response.json();
+    setTheBlog(updatedBlog);
+  }
 
     
   
@@ -44,20 +61,7 @@ function Blog() {
           <ChevronLeft />
           <p className="text-sm">Back</p>
         </div>
-        <div className="flex  gap-5 text-sm md:text-balance ">
-         <div className="flex gap-1">
-          <Heart size={20} className="hover:text-red-500 cursor-pointer " /> 
-          <p>12</p>
-         </div >
-         <div className="flex gap-1">
-          <Bookmark size={20} className="hover:text-yellow-500 cursor-pointer" />
-          <p>20</p>
-          </div>
-          <div className="flex gap-1">
-          <Eye size={20} className="hover:text-blue-500 cursor-pointer" />
-          <p>30</p>
-          </div>
-        </div>
+        {/* <button onClick={toggleLike}>  Like</button> */}
       </div>
      
         {/* this is the blog start */}
@@ -80,7 +84,7 @@ function Blog() {
                     </div>
                   </div>
                 ))}
-                {theblog.categories.length > 2 && (
+                {theblog.categories.length > 3 && (
                   <div className="flex items-center justify-start gap-2 mt-2">
                     <div className="py-0.5 px-3 rounded-full bg-orange-200">
                       <p className=" text-sm font-semibold text-orange-600">
@@ -112,6 +116,45 @@ function Blog() {
         className=" object-center w-full  md:h-[480px] max-w-[1000px]     rounded-xl  aspect-video "
       />
     </div>
+    {/* the blog user profile and the likes also  */}
+    <div className=" flex items-center justify-around gap-10 my-5">
+      <div>
+      {
+        theblog.user && <div className="flex items-center gap-2">
+        <img
+          className=" w-16 h-16 rounded-full"
+          src={`http://localhost:8000${theblog.user.profile_image}`}
+          alt={theblog.user.name}
+        />
+        <div>
+        <p className="text-sm font-semibold text-slate-600">
+            {theblog.user.name}
+          </p>
+          <p className="text-xs    text-slate-600">
+            {new Date(theblog.created_at).toLocaleDateString()}
+          </p>
+        </div>
+      </div>
+      }
+      </div>
+    <div className="flex  gap-5 text-sm md:text-balance ">
+         <div className="flex gap-1">
+          <Heart size={20} className="hover:text-red-500 cursor-pointer " /> 
+          <p>12</p>
+         </div >
+         <div className="flex gap-1">
+          <Bookmark size={20} className="hover:text-yellow-500 cursor-pointer" />
+          <p>20</p>
+          </div>
+          <div className="flex gap-1">
+          <Eye size={20} className="hover:text-blue-500 cursor-pointer" />
+          <p>30</p>
+          </div>
+        </div>
+
+    </div>
+
+
     {/* this is the blogs content */}
     <div className=" flex flex-col lg:grid lg:grid-cols-12  justify-start w-full  gap-5 px-5 md:px-10 py-10">
       <div className=" col-span-4  lg:col-span-3">

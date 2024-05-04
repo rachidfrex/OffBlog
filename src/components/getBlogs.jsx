@@ -11,7 +11,7 @@ import Skeleton from "../components/Skeleton";
 import Blog from "../pages/blog";
 
 function GetBlogs() {
-  const { getCategories , userCon } = useContext(UserContext);
+  const { getCategories , userCon ,setGetBlogs  } = useContext(UserContext);
   
   const [allblogs, setAllBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +25,7 @@ function GetBlogs() {
     });
     blogs = await blogs.json();
     setAllBlogs(blogs); 
+    setGetBlogs(blogs);
     console.log("blogs", blogs);
     setIsLoading(true);
   };
