@@ -20,6 +20,10 @@ function Profile({setOpenProfile}) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [setOpenProfile]);
+  const handelLogOut = () => {
+    localStorage.clear();
+    window.location.href = "/login";
+  };
   return (
     <div ref={ref}  className="  cursor-pointer  flex flex-col " >
       <ul className="flex flex-col  bg-white dropdownProfil ">
@@ -46,9 +50,13 @@ function Profile({setOpenProfile}) {
           change password
         </li> </Link>
         <hr className="  mx-2 border-black/30 mt-2"/>
+        <button  
+          onClick={handelLogOut}
+            >
         <li className="hover:bg-gray-50 px-4 flex gap-2 justify-start items-center  pt-2  ">
           <LogOut size={15}/>
           log out</li>
+          </button>
       </ul>
     </div>
   );

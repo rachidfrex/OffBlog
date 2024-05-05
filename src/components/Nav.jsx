@@ -109,12 +109,14 @@ useEffect(() => {
             </Link>
           ) : (
             <>
-              <Link to="/login" className="  md:text-base navlinks  p-2 btn-dark">
+              <div className=" flex flex-col gap-2 w-full">
+              <Link to="/login" className=" md:hidden text-base text-center  p-2 btn-dark">
                 Login
               </Link>
-              <Link to="/register" className="  md:text-base btn-dark  p-2 navlinks">
+              <Link to="/register" className=" md:hidden text-base btn-light text-center  p-2 ">
                 Register
               </Link>
+              </div>
             </>
           )}
         </div>
