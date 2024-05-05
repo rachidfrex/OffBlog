@@ -182,7 +182,14 @@ function Blog() {
                   </ul>
                 );
               case 'quote':
-                return <blockquote className=" italic font-semibold text-gray-900 " key={index}>"{item.data.text}"</blockquote>;
+                return (
+                  <>
+                  <blockquote className=" italic font-semibold text-gray-900 " key={index}>"{item.data.text}"</blockquote> 
+                  <p className="  text-gray-900 mt-1 "   >{item.data.caption}</p>
+                  </>
+                  
+                );
+               
               default:
                 return null;
             }

@@ -25,7 +25,7 @@ function CategoriesPage() {
   }, []);
   console.log("hadi hiya categories", categories);
   return (
-    <div className="flex flex-col justify-center items-center mx-20 mt-10 mb-20  ">
+    <div className="flex  flex-col justify-center items-center mx-10 md:mx-20 mt-10 mb-20  ">
       <h1 className="text-4xl font-semibold text-black leading-tight text-center">
         Categories 
       </h1>
@@ -33,7 +33,7 @@ function CategoriesPage() {
        <CategoriesSkeleton />
         ) : (
             <div className=" flex justify-start items-center gap-4  overflow-hidden ">
-        <div className="w-full  h-fit  mt-5  grid grid-cols-5 gap-5 ">
+        <div className="w-full  h-fit  mt-5  grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 grid-cols-1 gap-5 ">
           {categories.map((collection) => (
             <div className="relative ">
               <img
