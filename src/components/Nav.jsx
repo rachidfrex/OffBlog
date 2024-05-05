@@ -132,7 +132,7 @@ useEffect(() => {
         </button>
         {isUser ? (
           <>
-            <div className="hidden md:flex rounded-full w-14 items-center text-sm text-slate-700">
+            <div className="hidden md:flex  rounded-full w-14 items-center text-sm text-slate-700">
               <button onClick={() => setOpenProfile(!openProfile)}>
                 <img
                   src={userCon? `http://localhost:8000${userCon.profile_image}`: profleimage}
@@ -141,7 +141,7 @@ useEffect(() => {
                 />
               </button>
               {/* <div className="profile" ref={profileRef}> */}
-              {openProfile ? <Profile /> : !openProfile}
+              {openProfile ? <Profile  setOpenProfile={setOpenProfile} /> : !openProfile}
               {/* </div> */}
             </div>
           </>

@@ -41,10 +41,10 @@ function Dashboard() {
                   <BookText size={15} />
                     Blogs
                 </Link>
-                <Link to='/Notifications' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in'>
+                {/* <Link to='/Notifications' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in'>
                 <BellRing size={15} />
                     Notifications
-                </Link>
+                </Link> */}
                 <Link to='/editor' className='text-sm text-gray-500  p-2 py-4 hover:bg-gray-100 flex gap-2 items-center rounded-sm transition duration-200 ease-in'>
                 <SquarePen size={15} />
                     Write

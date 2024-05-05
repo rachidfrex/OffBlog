@@ -9,12 +9,7 @@ import { useRef } from 'react';
 function SearchBar({search}) {
 const [searchInput, setSearchInput] = useState('');
 const [searchResults, setSearchResults] = useState([]);
-const [buttonClicked, setButtonClicked] = useState(false);
 const { getBlogs } = useContext(UserContext);
-
-console.log("filteredBlogs", searchResults);
-console.log("searchInput", searchInput);
-console.log("buttonClicked", buttonClicked);
 function filterBlogs() {
   const filteredBlogs = getBlogs.filter(blog => blog.title.toLowerCase().includes(searchInput.toLowerCase()));
    setSearchResults(filteredBlogs);
