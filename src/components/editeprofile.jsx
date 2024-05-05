@@ -116,14 +116,14 @@ function Editeprofile() {
         <h1 className=" font-semibold  leading-tight text-start mt-2  ">
           Edite Profile
         </h1>
-        <div className=" grid grid-cols-12   gap-5 mt-5">
+        <div className=" flex flex-col lg:grid lg:grid-cols-12   gap-5 mt-5">
           <div className=" col-span-2 flex flex-col  items-center">
             <img
               src={profileImage == null  ? `http://localhost:8000${user.profile_image}` : profileImage }
               alt=""
               className="w-32 h-32 border-2 rounded-full  object-center "
             />
-            <label className="btn-light py-2 text-sm mt-2 flex justify-center w-full cursor-pointer">
+            <label className="btn-light py-2 text-sm mt-2 flex justify-center w-full cursor-pointer max-w-[200px]">
               <input
                 type="file"
                 onChange={handleImageUpload}
@@ -190,8 +190,8 @@ function Editeprofile() {
                   {textCounter} characters remaining
                 </span>
               </div>
-              <div className="mt-5">
-                <button className="btn-dark py-2 text-sm" onClick={updateUserInfo}>Save</button>
+              <div className="mt-5 ">
+                <button className="btn-dark py-2 text-sm  " onClick={updateUserInfo}>Save</button>
               </div>
             </form>
           </div>
