@@ -1,6 +1,8 @@
 import React from 'react'
 import { UserContext } from "../components/useContext";
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function GetBlogsV2() {
   const { getBlogs  } = useContext(UserContext);
@@ -11,6 +13,8 @@ function GetBlogsV2() {
      
       <div class=" py-5  grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 grid-cols-1 gap-4 max-w-[1280px]">
         {getBlogs.map((Blogs) => (
+            <Link to={`/Blog/${Blogs.id}`} className="text-sm">
+
           <div key={Blogs.id} className='relative  rounded-lg bg-white  border-2  grid grid-cols-5 justify-start items-start w-full '>
             <div className='  col-span-2 p-2  '>
               <img
@@ -61,6 +65,7 @@ function GetBlogsV2() {
             </div>
 
             </div>
+          </Link>
         ))}
       </div>
 

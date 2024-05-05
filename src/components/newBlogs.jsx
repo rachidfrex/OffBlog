@@ -1,6 +1,8 @@
 import React from "react";
 import GetBlogsV2 from "./getBlogsV2";
 import GetBlogs from "./getBlogs";
+import { Grid2X2 } from 'lucide-react';
+import { Grid3X3 } from 'lucide-react';
 function NewBlogs() {
   const [version, setVersion] = React.useState("v1");
  
@@ -15,10 +17,13 @@ function NewBlogs() {
       <div className="flex w-full justify-end items-center gap-2">
       <button
       onClick={() => setVersion("v1")}
-       className="bg-black text-white py-1  px-3" > v1 </button>
+       className={ version === 'v1' ? 'bg-black p-1 text-white rounded-md  ' : 'bg-slate-200 p-1  rounded-md  '
+        } >  <Grid2X2 size={20} /> </button>
       <button
       onClick={() => setVersion("v2")} 
-       className="bg-black text-white py-1  px-3" > v2</button>
+       className={ version === 'v2' ? 'bg-black p-1 text-white rounded-md  ' : 'bg-slate-200 p-1  rounded-md  '
+        }
+       > <Grid3X3 size={20} /></button>
       </div>
       <div style={{ display: version === "v1" ? "block" : "none" }}>
         <GetBlogs />
