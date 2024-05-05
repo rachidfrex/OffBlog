@@ -2,7 +2,7 @@ import React from 'react'
 
 function GetBlogsV2() {
   return (
-    <div>GetBlogsV2</div>
+    <div>this is the get  blogs v2 </div>
   )
 }
 
