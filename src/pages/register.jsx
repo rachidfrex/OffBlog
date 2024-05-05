@@ -58,7 +58,7 @@ function Register() {
   }
 
   return (
-    <div className="flex gap-10 justify-center items-center flex-col h-screen mx-10 relative ">
+    <div className="flex gap-10 justify-center items-center flex-col h-screen md:mx-10 relative ">
            {
         toast && (
           <Toaster
@@ -70,8 +70,8 @@ function Register() {
      
       <div className="bg-white w-full md:w-auto p-10 flex gap-10 flex-col rounded-lg">
         <div className="rounded-lg text-slate-700 flex justify-start items-start flex-col gap-2 w-full md:w-[28rem]">
-          <h1 className="text-4xl font-semibold text-black leading-tight text-center">
-            create an account
+          <h1 className=" text-3xl font-semibold text-black leading-tight text-center">
+            Create an account
           </h1>
           <p className="text-slate-500 text-sm">
             Fill in your details to create an account
