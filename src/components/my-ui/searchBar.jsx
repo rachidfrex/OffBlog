@@ -49,20 +49,24 @@ const handleClick = () => {
           </span>
 
 
-            <div className=' absolute  top-full bg-slate-400 p-4'
+            <div className=' flex justify-center items-center w-auto md:w-full mr-[10%]  absolute  bg-slate-50  top-full mt-0.5 rounded-md  p-4'
             // or botton clicked is true and the input is empty, display the filteredBlogs array
             style={{ display: (searchInput === '' ) ? 'none' : 'block' }}
             >
             {  // if the input is empty and the filteredBlogs array is empty, display a message
               searchResults.length === 0
-            ? <p className='text-white'>No results found</p>
+            ? <p className='w-full flex justify-center items-center text-black '>No results found</p>
             : searchResults.map(blog => (
-              <div key={blog.id} className='flex justify-between items-center bg-slate-100 p-2 rounded-md mb-2'>
-                <p>{blog.title}</p>
-                <Link
-                  onClick={handleClick}
-                  to={`/Blog/${blog.id}`}  className='bg-slate-400 text-white p-1 rounded-md'>View</Link>
-              </div>
+              <Link
+                key={blog.id}
+                onClick={handleClick}
+                to={`/Blog/${blog.id}`}  
+              >
+                <div className='flex  flex-col justify-between items-center   rounded-md mb-2'>
+                  <p className='text-sm p-2 hover:text-black/60'>{blog.title}</p>
+                  <hr   className='w-full'/>
+                </div>
+              </Link> 
             ))
             }
           </div>

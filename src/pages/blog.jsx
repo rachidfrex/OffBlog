@@ -100,7 +100,7 @@ function Blog() {
       </div>
     {/* this is the blogs title */}
     <div className="flex justify-center py-5">
-      <h1 className=" text-2xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-full md:w-[700px]  font-semibold ">
+      <h1 className=" text-xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-full md:w-[700px]  font-semibold ">
         {theblog.title}
       </h1>
     </div>
@@ -121,7 +121,7 @@ function Blog() {
       />
     </div>
     {/* the blog user profile and the likes also  */}
-    <div className=" flex items-center justify-around gap-10 my-5">
+    {/* <div className=" flex items-center justify-around gap-10 my-5">
       <div>
       {
         theblog.user && <div className="flex items-center gap-2">
@@ -156,7 +156,7 @@ function Blog() {
           </div>
         </div>
 
-    </div>
+    </div> */}
 
 
     {/* this is the blogs content */}
