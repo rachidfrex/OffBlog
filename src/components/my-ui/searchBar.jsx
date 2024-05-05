@@ -4,6 +4,8 @@ import { Search } from 'lucide-react'
 import { useContext } from 'react'
 import { UserContext } from '../useContext'
 import { Link } from 'react-router-dom'
+import { useRef } from 'react';
+
 function SearchBar({search}) {
 const [searchInput, setSearchInput] = useState('');
 const [searchResults, setSearchResults] = useState([]);
@@ -23,8 +25,10 @@ useEffect(() => {
   filterBlogs();
 }
 , [searchInput]);
+const searchInputRef = useRef(null);
 const handleClick = () => {
   setSearchInput('');
+  searchInputRef.current.focus();
 }
      
 
@@ -41,6 +45,7 @@ const handleClick = () => {
             type="text"
             placeholder="Search"
             value={searchInput}
+            ref={searchInputRef}
             onChange={(e) => setSearchInput(e.target.value)}
             className="w-full md:w-auto text-sm bg-slate-100 bg-grey p-3  pl-6 pr-[12%] md:pr-6 rounded-full placeholder:text-slate-800 focus:outline-none  focus:ring-2 focus:placeholder:text-black focus:ring-black focus:ring-opacity-50 md:pl-12 "
           />
