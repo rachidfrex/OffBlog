@@ -3,6 +3,7 @@ import GetBlogsV2 from "./getBlogsV2";
 import GetBlogs from "./getBlogs";
 import { Grid2X2 } from 'lucide-react';
 import { Grid3X3 } from 'lucide-react';
+import { Link } from "react-router-dom";
 function NewBlogs() {
   const [version, setVersion] = React.useState("v1");
  
@@ -32,9 +33,9 @@ function NewBlogs() {
         <GetBlogsV2 />
       </div>
       <div className="flex justify-center w-full">
-        <button className="bg-black text-white p-2 rounded-full mt-10 px-10 border-2 hover:bg-white hover:border-2 hover:border-black hover:text-black transition duration-299 ease-in-out">
+        <Link to='/blogs' className="bg-black text-white p-2 rounded-full mt-10 px-10 border-2 hover:bg-white hover:border-2 hover:border-black hover:text-black transition duration-299 ease-in-out">
           Browse all
-        </button>
+        </Link>
       </div>
     </div>
   );
