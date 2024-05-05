@@ -97,7 +97,7 @@ function GetBlogs() {
               </div>
 
               <div className="flex gap-2">
-              {Blogs.categories.slice(0, 2).map((category, index) => (
+              {Blogs.categories.slice(0, 3).map((category, index) => (
                   <div className="flex items-center justify-start gap-2 mt-2" key={index}>
                     <div className={`py-0.5 px-2 rounded-full ${index === 0 ? 'bg-violet-200' : index === 1 ? 'bg-yellow-200' : 'bg-green-200'}`}>
                       <p className={`text-xs font-semibold ${index === 0 ? 'text-violet-600' : index === 1 ? 'text-yellow-600' : 'text-green-600'}`}>
@@ -106,7 +106,7 @@ function GetBlogs() {
                     </div>
                   </div>
                 ))}
-                {Blogs.categories.length > 2 && (
+                {Blogs.categories.length > 3 && (
                   <div className="flex items-center justify-start gap-2 mt-2">
                     <div className="py-0.5 px-2 rounded-full bg-green-200">
                       <p className="text-xs font-semibold text-green-600">
