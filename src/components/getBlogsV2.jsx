@@ -1,6 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
-import banner from  "../assets/images/banner2.jpg"
 import { UserContext } from "../components/useContext";
 import { useContext } from 'react';
 
