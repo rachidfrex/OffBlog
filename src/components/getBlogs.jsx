@@ -81,7 +81,7 @@ function GetBlogs() {
                 </div>
                 }
                 <div>
-                  <p className="  font-semibold text-[14px] ">{Blogs.title}</p>
+                  <p className="  font-semibold text-[14px] line-clamp-2 ">{Blogs.title}</p>
                   <p className="  line-clamp-2 text-slate-600 text-xs ">
 
                         { 
