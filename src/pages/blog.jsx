@@ -201,7 +201,7 @@ function Blog() {
 )}
        {/* this is the end of the blogs  */}
       {/* this is the blogs Comments */}
-      <section className=" w-full relative flex items-center justify-center antialiased bg-white ">
+      {/* <section className=" w-full relative flex items-center justify-center antialiased bg-white ">
     <div className="container px-0 mx-auto sm:px-5">
 
         <div className="flex-col w-full py-4 mx-auto bg-white border-b-2 border-r-2 border-gray-200 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm md:w-2/3">
@@ -272,7 +272,7 @@ function Blog() {
         </div>
 
     </div>
-</section>
+</section> */}
 
       
     </div>
