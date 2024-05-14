@@ -25,8 +25,6 @@ OffBlog is a modern blogging platform developed using React.js, Vite, Tailwind C
     npm install
     ```
 
-4. Set up the Laravel backend by following the instructions in the `backend/README.md` file.
-
 5. Start the development server:
 
     ```bash
