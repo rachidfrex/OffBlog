@@ -1,8 +1,60 @@
-# React + Vite
+# OffBlog Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+OffBlog is a modern blogging platform developed using React.js, Vite, Tailwind CSS for the frontend, and Laravel for the backend.
+
+## Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/yourusername/OffBlog.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd OffBlog
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+5. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+## Frontend
+
+### Technologies Used
+
+- React.js
+- Vite
+- Tailwind CSS
+
+
+
+## Backend
+
+### Technologies Used
+
+- Laravel
+
+
+
+
+
+## Contact
+
+- Developer: Rachid El Hajouji
+
+Feel free to reach out with any questions, feedback, or suggestions!
+
+
