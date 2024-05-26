@@ -9,13 +9,13 @@ function NewBlogs() {
  
 
   return (
-    <div className="mt-20 md:px-20 px-5 flex flex-col w-full items-center ">
+    <div className="mt-20 md:px-20 px-5 flex flex-col w-full justify-center items-center   ">
       <div className="flex gap-5 justify-center items-center mb-10 ">
         <h1 className="text-2xl lg:text-4xl font-semibold text-black leading-tight text-center ">
           Discover our new <br /> Blogs
         </h1>
       </div>
-      <div className="flex w-full justify-end items-center gap-2">
+      <div className="flex w-full justify-end items-center gap-2 max-w-[1280px]">
       <button
       onClick={() => setVersion("v1")}
        className={ version === 'v1' ? 'bg-black p-1 text-white rounded-md  ' : 'bg-slate-200 p-1  rounded-md  '

@@ -25,7 +25,7 @@ function Profile({setOpenProfile}) {
     window.location.href = "/login";
   };
   return (
-    <div ref={ref}  className="  cursor-pointer  flex flex-col " >
+    <div ref={ref}  className="  cursor-pointer  flex flex-col  z-40 " >
       <ul className="flex flex-col  bg-white dropdownProfil ">
       <Link
           onClick={() => setOpenProfile(false)} 

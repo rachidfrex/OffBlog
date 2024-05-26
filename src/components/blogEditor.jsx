@@ -98,7 +98,7 @@ useEffect(() => {
           <button className="btn-dark py-2 text-sm"
           onClick={handelPublishEvent}
           >publish</button>
-          <button className="btn-light py-2 text-sm">save draft</button>
+          {/* <button className="btn-light py-2 text-sm">save draft</button> */}
         </div>
       </nav>
       <section>
