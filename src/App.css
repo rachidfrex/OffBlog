@@ -167,8 +167,9 @@
 .dropdownProfil{
     position: absolute;
     top: 4.5rem;
-    right: 4.3rem;
-    width: 170px;
+    /* right: 4.3rem; */
+    right: 4%;
+    width: 180px;
     padding: 10px 0;
     border-radius: 8px;
     border: 2px solid gray;
@@ -177,7 +178,7 @@
     content: "";
     position: absolute;
     top: -0.7rem;
-    right: 2rem;
+    right: 2.5rem;
     width: 20px;
    height: 20px;
    transform:rotate(45deg);
