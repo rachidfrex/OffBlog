@@ -43,7 +43,12 @@ function PublishForm() {
       toast.error(`Error: ${result.status}`);
       return;
     }
-    result = await result.json();
+    try {
+      result = await result.json();
+    } catch (error) {
+      console.error('Failed to parse JSON:', error);
+      toast.error("Failed to parse JSON response");
+    }
     if (result.success) {
       console.log("result", result);
       toast.success(result.success);
