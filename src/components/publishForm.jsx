@@ -6,7 +6,7 @@ import { useState } from "react";
 import Tags from "./tags";
 function PublishForm() {
   const characterLimit = 200;
-  let tageLimit = 7;
+  let tageLimit = 7; 
   let {
     blog,
     blog: { title, image_url, content, category, user_id, des },
@@ -44,7 +44,9 @@ function PublishForm() {
       return;
     }
     try {
-      result = await result.json();
+      const rawResponse = await result.text(); // Get the raw response
+      console.log('Raw response:', rawResponse); // Log the raw response
+      result = JSON.parse(rawResponse); // Parse the raw response as JSON
     } catch (error) {
       console.error('Failed to parse JSON:', error);
       toast.error("Failed to parse JSON response");
