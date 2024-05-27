@@ -100,7 +100,7 @@ function Blog() {
       </div>
     {/* this is the blogs title */}
     <div className="flex justify-center py-5">
-      <h1 className=" text-xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-full md:w-[700px]  font-semibold ">
+      <h1 className=" text-xl md:text-5xl px-10 md:px-0 flex  justify-center items-center text-center w-full md:w-[800px]  font-semibold ">
         {theblog.title}
       </h1>
     </div>
