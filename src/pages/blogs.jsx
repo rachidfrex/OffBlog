@@ -40,8 +40,11 @@ console.log("searchResults", searchResults);
             className="p-[13px] border-2 w-full  rounded-md mt-4 text-slate-600 text-sm relative shadow-sm  "
             placeholder="Search for blogs..."
           />
-          <button className="bg-black/90 text-sm border-2 border-black hover:bg-slate-100 hover:border-2 hover:text-slate-600 transform duration-100 ease-in text-white p-2 rounded-md mt-4 absolute right-1">
-            Search now
+          <button className="bg-black/90 text-sm border-2 border-black  hover:border-2 hover:text-slate-600 transform duration-100 ease-in text-white p-2 rounded-md mt-4 absolute right-1">
+          <svg class="w-6 h-6  text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+          </svg>
+
           </button>
         </div>
         </div>

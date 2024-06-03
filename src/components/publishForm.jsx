@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import { EdidoreContext } from "./editorPage";
 import CreatenewCategory from "./create-newCategory"
 import { useState } from "react";
 import Tags from "./tags";
 function PublishForm() {
+  const navigate = useNavigate()
   const characterLimit = 200;
   let tageLimit = 7; 
   let {
@@ -63,9 +65,11 @@ function PublishForm() {
         user_id: "",
         des: "",
       });
+       navigate('/dashboard/user-blogs');
       return;
     }
     toast.error(result.error);
+
   };
   console.log("the image", blog.image);
 

@@ -1,17 +1,18 @@
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Link } from "lucide-react";
 import login from "../assets/images/login.jpg";
 import { Heart } from "lucide-react";
 import { Bookmark } from "lucide-react";
 import { Eye } from 'lucide-react';
 import { Ellipsis } from 'lucide-react';
 import { useParams } from "react-router-dom";
-import { useEffect ,useState } from "react";
+import { useEffect ,useState  } from "react";
 import BlogSkeleton from "../components/blogSkeleton";
 import TableofCentent from "../components/tableofCentent";
-
+import { useNavigate } from 'react-router-dom';
 function Blog() {
   const [theblog, setTheBlog] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const { id } = useParams();
   const getblogByid = async () => {
     let blog = await fetch(`http://localhost:8000/api/getBlog/${id}`, {
@@ -63,7 +64,7 @@ function Blog() {
       <div className="flex  justify-between items-center w-full px-5 transition duration-300 ease-out cursor-pointer">
         <div className="flex items-center justify-center ">
           <ChevronLeft />
-          <p className="text-sm">Back</p>
+          <button  onClick={() => navigate(-1)}className="text-sm">Back</button>
         </div>
         {/* <button onClick={toggleLike}>  Like</button> */}
       </div>
