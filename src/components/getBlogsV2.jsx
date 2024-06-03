@@ -18,7 +18,7 @@ function GetBlogsV2() {
           <div key={Blogs.id} className='relative  rounded-lg bg-white  border-2  grid grid-cols-5 justify-start items-start w-full '>
             <div className='  col-span-2 p-2  '>
               <img
-                className=' object-center  h-fit  min-h-[150px] aspect-square rounded-md sm:aspect-video w-full bg-black/30'
+                className=' object-center  h-fit  min-h-[200px] aspect-square rounded-md sm:aspect-video w-full bg-black/30'
                 src={`http://localhost:8000${Blogs.image_url}`}
                 alt={Blogs.title}
               />
@@ -61,6 +61,25 @@ function GetBlogsV2() {
                   ))
                 }
                   </p>
+                </div>
+                <div>
+                {
+                  Blogs.user && <div className="flex items-center gap-2">
+                  <img
+                    className="w-10 h-10 rounded-full"
+                    src={`http://localhost:8000${Blogs.user.profile_image}`}
+                    alt={Blogs.user.name}
+                  />
+                 <div>
+                  <p className="text-xs font-semibold text-slate-600">
+                      {Blogs.user.name}
+                    </p>
+                    <p className="text-xs    text-slate-600">
+                      {new Date(Blogs.created_at).toLocaleDateString()}
+                    </p>
+                 </div>
+                </div>
+                }
                 </div>
             </div>
 

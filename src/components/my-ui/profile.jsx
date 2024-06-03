@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { UserRound } from 'lucide-react';
 import { LayoutDashboard } from 'lucide-react';
+import { Feather } from 'lucide-react';
 import { Lock } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 
@@ -40,6 +41,13 @@ function Profile({setOpenProfile}) {
         <li className="hover:bg-gray-50 px-4  py-1  flex gap-2 justify-start items-center  text-sm">
           <LayoutDashboard size={15}/>
         Dashboard
+        </li>
+        </Link>
+        <Link  onClick={() => setOpenProfile(false)}  to="/editor" >
+
+        <li className="hover:bg-gray-50 px-4  py-1  flex gap-2 justify-start items-center  text-sm">
+          <Feather size={15}/>
+        Write 
         </li>
         </Link>
         <Link  
