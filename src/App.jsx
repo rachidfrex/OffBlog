@@ -17,6 +17,7 @@ import GetUserBlog from "./components/getUserBlog";
 import About from "./pages/about";
 import Dashboard from "./pages/dashboard";
 import Footer from "./components/footer";
+import Filterbycategory from "./components/filterbycategory";
 import {Routes, Route} from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { UserContext } from './components/useContext';
@@ -50,6 +51,7 @@ function App() {
                 <Route path="/editor" element={<EditorPage />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/categories" element={<CategoriesPage />} />
+                <Route path="/category/:id" element={<Filterbycategory />} />
             </Routes> 
             { !hideOnRoutes.includes(location.pathname) && <Footer /> }
         </div>
