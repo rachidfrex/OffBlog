@@ -1,4 +1,5 @@
-# OffBlog Documentation
+# OffBlog project 
+![OffBlog Logo](src/assets/images/acueal1.png)
 
 
 ## Overview
