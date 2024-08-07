@@ -12,7 +12,7 @@ OffBlog is a modern blogging platform that leverages the power of React.js, Vite
 
 1. **Clone the frontend repository:**
     ```bash
-    git clone https://github.com/yourusername/OffBlog.git
+    https://github.com/rachidfrex/OffBlog.git
     ```
 
 2. **Navigate to the project directory:**
@@ -34,7 +34,7 @@ OffBlog is a modern blogging platform that leverages the power of React.js, Vite
 
 1. **Clone the backend repository:**
     ```bash
-    git clone https://github.com/rachidfrex/offblog_backend.git
+   https://github.com/rachidfrex/offblog_backend.git
     ```
 
 2. **Navigate to the backend project directory:**
