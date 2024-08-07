@@ -59,7 +59,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="navbar">
+    <div className="navbar z-50">
       <div className="flex items-center justify-center md:gap-4 lg:gap-8">
         <h1 className="flex gap-2">
           <Link to="/" className="flex gap-2">
@@ -104,7 +104,7 @@ useEffect(() => {
           </Link>
 
           {isUser ? (
-            <Link to="/profile" className=" md:text-base  md:hidden navlinks ">
+            <Link to="/profile" className="  md:text-base  md:hidden navlinks ">
               Profile
             </Link>
           ) : (

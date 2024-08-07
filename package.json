@@ -21,6 +21,7 @@
     "@flaticon/flaticon-uicons": "^3.2.1",
     "@material-tailwind/react": "^2.1.9",
     "axios": "^1.6.8",
+    "dompurify": "^3.1.4",
     "gsap": "^3.12.5",
     "lucide-react": "^0.365.0",
     "qs": "^6.12.1",

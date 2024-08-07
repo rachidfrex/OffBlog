@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../components/useContext";
 import { useContext } from 'react';
 
+ 
 function SlidCategoris() {
   const { setGetCategories } = useContext(UserContext);
   var settings = {

@@ -14,7 +14,7 @@ function BlogEditor() {
   let {blog ,blog :{title ,image_url,content,category,user_id ,des },setBlog , 
 textEditor , setTextEditor ,editorState , setEditorState}= useContext(EdidoreContext);
 
-
+ 
 useEffect(() => {
   // console.log("textEditor", textEditor);
   setTextEditor(new EditorJS({
@@ -106,7 +106,7 @@ useEffect(() => {
           <div className="relative aspect-video bg-white border-4 border-slate-300 hover:opacity-80">
             <label htmlFor="uploadBanner">
             <img src={blog.image_url ? blog.image_url : banner} alt="" className="z-20" />
-              <input type="file" name="image" id="uploadBanner" accept=".png , .jpg ,jpeg " hidden onChange={handelBnnerUpload} />
+              <input type="file" name="image" id="uploadBanner" accept=".png , .jpg ,.jpeg , .webp " hidden onChange={handelBnnerUpload} />
             </label>
           </div>
           <div>

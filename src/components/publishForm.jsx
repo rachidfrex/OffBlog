@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import { EdidoreContext } from "./editorPage";
 import CreatenewCategory from "./create-newCategory"
 import { useState } from "react";
 import Tags from "./tags";
 function PublishForm() {
+  const navigate = useNavigate()
   const characterLimit = 200;
-  let tageLimit = 7;
+  let tageLimit = 7; 
   let {
     blog,
     blog: { title, image_url, content, category, user_id, des },
@@ -43,7 +45,14 @@ function PublishForm() {
       toast.error(`Error: ${result.status}`);
       return;
     }
-    result = await result.json();
+    try {
+      const rawResponse = await result.text(); // Get the raw response
+      console.log('Raw response:', rawResponse); // Log the raw response
+      result = JSON.parse(rawResponse); // Parse the raw response as JSON
+    } catch (error) {
+      console.error('Failed to parse JSON:', error);
+      toast.error("Failed to parse JSON response");
+    }
     if (result.success) {
       console.log("result", result);
       toast.success(result.success);
@@ -56,9 +65,11 @@ function PublishForm() {
         user_id: "",
         des: "",
       });
+       navigate('/dashboard/user-blogs');
       return;
     }
     toast.error(result.error);
+
   };
   console.log("the image", blog.image);
 
